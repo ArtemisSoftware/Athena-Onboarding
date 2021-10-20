@@ -2,9 +2,13 @@ package com.artemissoftware.athenaonboard
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Point
+import android.graphics.drawable.BitmapDrawable
 import android.view.Gravity
 import android.view.View
 import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 
@@ -41,6 +45,39 @@ class PopUpTutorial {
         layout.setOnTouchListener { v, event -> //Close the window when clicked
             popupWindow.dismiss()
             true
+        }
+    }
+
+    fun showPopupWindow_v2(view: View, p: Point){
+        val popupWidth =  ViewGroup.LayoutParams.WRAP_CONTENT
+        val popupHeight =  ViewGroup.LayoutParams.WRAP_CONTENT
+
+        // Inflate the popup_layout.xml
+        //val viewGroup = context.findViewById<View>(R.id.popup) as ConstraintLayout
+        val layoutInflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layout: View = layoutInflater.inflate(R.layout.popup_layout, null)
+
+        // Creating the PopupWindow
+        val popup = PopupWindow(view)
+        popup.contentView = layout
+        popup.width = popupWidth
+        popup.height = popupHeight
+        popup.isFocusable = true
+
+        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
+        val OFFSET_X = 30
+        val OFFSET_Y = 30
+
+        // Clear the default translucent background
+        popup.setBackgroundDrawable(BitmapDrawable())
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y)
+
+        // Getting a reference to Close button, and close the popup when clicked.
+        val close = layout.findViewById<View>(R.id.btn_close) as Button
+        close.setOnClickListener {
+            popup.dismiss()
         }
     }
 }
