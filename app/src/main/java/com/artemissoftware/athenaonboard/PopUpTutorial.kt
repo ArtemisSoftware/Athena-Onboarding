@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Point
 import android.graphics.drawable.BitmapDrawable
+import android.os.Build
 import android.view.Gravity
 import android.view.View
 import android.view.LayoutInflater
@@ -71,6 +72,12 @@ class PopUpTutorial {
         // Clear the default translucent background
         popup.setBackgroundDrawable(BitmapDrawable())
 
+        // Set an elevation value for popup window
+        // Call requires API level 21
+        if(Build.VERSION.SDK_INT>=21){
+            popup.elevation = 15.0f;
+        }
+
         // Displaying the popup at the specified location, + offsets.
         popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y)
 
@@ -80,4 +87,43 @@ class PopUpTutorial {
             popup.dismiss()
         }
     }
+
+
+    fun showPopupWindow_v3(view: View, popUpPoint: PopUpPoint){
+
+        val popupWidth =  ViewGroup.LayoutParams.WRAP_CONTENT
+        val popupHeight =  ViewGroup.LayoutParams.WRAP_CONTENT
+
+        // Inflate the popup_layout.xml
+        //val viewGroup = context.findViewById<View>(R.id.popup) as ConstraintLayout
+        val layoutInflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layout: View = layoutInflater.inflate(R.layout.popup_layout, null)
+
+        // Creating the PopupWindow
+        val popup = PopupWindow(view)
+        popup.contentView = layout
+        popup.width = popupWidth
+        popup.height = popupHeight
+        popup.isFocusable = true
+
+
+        // Clear the default translucent background
+        popup.setBackgroundDrawable(BitmapDrawable())
+
+        // Set an elevation value for popup window
+        // Call requires API level 21
+        if(Build.VERSION.SDK_INT>=21){
+            popup.elevation = 15.0f;
+        }
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x, popUpPoint.y)
+
+        // Getting a reference to Close button, and close the popup when clicked.
+        val close = layout.findViewById<View>(R.id.btn_close) as Button
+        close.setOnClickListener {
+            popup.dismiss()
+        }
+    }
+
 }
