@@ -27,6 +27,30 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
+    <ImageView
+        android:id="@+id/img_show_popup_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_show_popup_library"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_show_popup_armory"
+        app:tint="@color/teal_200"
+        android:background="@color/black"/>
+
+
+    <ImageView
+        android:id="@+id/img_show_popup_info"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/black"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/img_show_popup_logo"
+        app:layout_constraintTop_toBottomOf="@+id/img_show_popup_logo"
+        app:tint="@color/teal_200" />
+
 
     <Button
         android:id="@+id/btn_show_popup_library"
@@ -38,6 +62,19 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_show_popup_armory" />
 
 
+    <ImageView
+        android:id="@+id/img_show_popup_athena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/black"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/teal_200" />
+
+
     <Button
         android:id="@+id/btn_show_popup_help"
         android:layout_width="wrap_content"
@@ -47,6 +84,17 @@
         android:text="@string/help"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_show_popup_tartarus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/to_tartarus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button

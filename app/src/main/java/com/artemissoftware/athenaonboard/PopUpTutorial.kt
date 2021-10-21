@@ -107,6 +107,14 @@ class PopUpTutorial {
         popup.isFocusable = true
 
 
+        popup.getContentView (). measure (0, 0);
+        val mPopupWindowHeight = popup.getContentView (). getMeasuredHeight ();
+        val mPopupWindowWidth = popup.getContentView (). getMeasuredWidth ();
+
+
+        popUpPoint.updateOffsets(mPopupWindowWidth, mPopupWindowHeight)
+
+
         // Clear the default translucent background
         popup.setBackgroundDrawable(BitmapDrawable())
 
@@ -117,7 +125,10 @@ class PopUpTutorial {
         }
 
         // Displaying the popup at the specified location, + offsets.
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x, popUpPoint.y)
+        //popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
+
+        popup.showAtLocation(layout,  Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
+
 
         // Getting a reference to Close button, and close the popup when clicked.
         val close = layout.findViewById<View>(R.id.btn_close) as Button

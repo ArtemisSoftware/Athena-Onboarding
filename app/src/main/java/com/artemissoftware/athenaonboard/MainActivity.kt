@@ -15,6 +15,8 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import androidx.annotation.MainThread
 import androidx.constraintlayout.widget.ConstraintLayout
+import android.util.DisplayMetrics
+import android.widget.ImageView
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,40 +26,90 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn_show_popup_armory = findViewById<View>(R.id.btn_show_popup_armory) as Button
-        val btn_show_popup_library = findViewById<View>(R.id.btn_show_popup_library) as Button
+
         val btn_show_popup_help = findViewById<View>(R.id.btn_show_popup_help) as Button
         val btn_show_popup_olympus = findViewById<View>(R.id.btn_show_popup_olympus) as Button
-        val lolo = this
+
+
+        val btn_show_popup_tartarus = findViewById<View>(R.id.btn_show_popup_tartarus) as Button
+        val img_show_popup_athena = findViewById<View>(R.id.img_show_popup_athena) as ImageView
+        val img_show_popup_logo = findViewById<View>(R.id.img_show_popup_logo) as ImageView
+        val img_show_popup_info = findViewById<View>(R.id.img_show_popup_info) as ImageView
+
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val height = displayMetrics.heightPixels
+        val width = displayMetrics.widthPixels
+
+
+        //first quadrant
+
+        val btn_show_popup_armory = findViewById<View>(R.id.btn_show_popup_armory) as Button
+        val btn_show_popup_library = findViewById<View>(R.id.btn_show_popup_library) as Button
+
 
         btn_show_popup_armory.setOnClickListener {
 
             val popUpTutorial = PopUpTutorial()
-            popUpTutorial.showPopupWindow_v2(it, getCoordinates(R.id.btn_show_popup_armory))
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_armory, displayMetrics))
 
         }
 
         btn_show_popup_library.setOnClickListener {
 
             val popUpTutorial = PopUpTutorial()
-            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_library))
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_library, displayMetrics))
 
         }
+
+
+        //second quadrant
+        //third quadrant
+        //fourth quadrant
 
         btn_show_popup_help.setOnClickListener {
 
             val popUpTutorial = PopUpTutorial()
-            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_help))
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_help, displayMetrics))
 
         }
 
         btn_show_popup_olympus.setOnClickListener {
 
             val popUpTutorial = PopUpTutorial()
-            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_olympus))
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_olympus, displayMetrics))
 
         }
 
+
+        btn_show_popup_tartarus.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics))
+
+        }
+
+        img_show_popup_logo.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.img_show_popup_logo, displayMetrics))
+
+        }
+
+        img_show_popup_athena.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.img_show_popup_athena, displayMetrics))
+
+        }
+
+        img_show_popup_info.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.img_show_popup_info, displayMetrics))
+
+        }
     }
 
 
@@ -85,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun getPopUpPoint(viewId : Int): PopUpPoint{
+    private fun getPopUpPoint(viewId : Int, displayMetrics: DisplayMetrics): PopUpPoint{
 
         val location = IntArray(2)
         val view = findViewById<View>(viewId) as View
@@ -104,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         point!!.x = location[0]
         point!!.y = location[1]
 
-        return PopUpPoint(point, view.width, view.height)
+        return PopUpPoint(point, view.width, view.height, displayMetrics)
     }
 
 }
