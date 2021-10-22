@@ -5,8 +5,8 @@ import android.util.DisplayMetrics
 
 class PopUpPoint (private val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayMetrics: DisplayMetrics){
 
-    private val calculatedOffsetX: Int = (offsetX /4)
-    private var calculatedOffsetY =  (offsetY + (offsetY / 7))
+    private val calculatedOffsetX: Int = calculateOffsetX(offsetX)
+    private var calculatedOffsetY =  calculateOffsetY(offsetY)
 
     private var firstQuadrant: Boolean
     private var secondQuadrant: Boolean
@@ -24,6 +24,16 @@ class PopUpPoint (private val point: Point, offsetX: Int = 0, offsetY: Int = 0, 
         thirdQuadrant = (point.x >= xRef && point.y >= yRef)
         fourthQuadrant = (point.x >= xRef && point.y <= yRef)
     }
+
+
+    private fun calculateOffsetX(offset: Int) : Int{
+        return -(offset /4)
+    }
+
+    private fun calculateOffsetY(offset: Int) : Int{
+        return offset// + (offset / 7)
+    }
+
 
     fun x (): Int {
 
@@ -72,10 +82,10 @@ class PopUpPoint (private val point: Point, offsetX: Int = 0, offsetY: Int = 0, 
             //result = point.x + calculatedOffsetX
         }
         else if(secondQuadrant){
-            //result = point.x + calculatedOffsetX
+            calculatedOffsetY = calculateOffsetY(offsetY)
         }
         else if(thirdQuadrant){
-            calculatedOffsetY = offsetY
+            calculatedOffsetY = calculateOffsetY(offsetY)
         }
         else if(fourthQuadrant){
             //result = point.x - calculatedOffsetX

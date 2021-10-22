@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -17,6 +20,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <!--    first quadrant-->
+
     <Button
         android:id="@+id/btn_show_popup_armory"
         android:layout_width="wrap_content"
@@ -25,6 +30,24 @@
         android:text="@string/armory"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/img_show_popup_theme"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_show_popup_library"
+        app:layout_constraintStart_toEndOf="@+id/btn_show_popup_library"
+        app:layout_constraintTop_toTopOf="@+id/btn_show_popup_library"
+        app:tint="@color/teal_200" />
+
+    <!--    second quadrant-->
+    <!--    third quadrant-->
+    <!--    fourth quadrant-->
+
+
 
 
     <ImageView
@@ -85,6 +108,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <Button
+        android:id="@+id/btn_show_popup_styx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/to_styx"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_tartarus"
+        app:layout_constraintStart_toStartOf="@+id/btn_show_popup_tartarus" />
 
     <Button
         android:id="@+id/btn_show_popup_tartarus"

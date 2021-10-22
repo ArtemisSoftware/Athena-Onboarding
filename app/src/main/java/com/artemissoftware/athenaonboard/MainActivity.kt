@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         val btn_show_popup_olympus = findViewById<View>(R.id.btn_show_popup_olympus) as Button
 
 
-        val btn_show_popup_tartarus = findViewById<View>(R.id.btn_show_popup_tartarus) as Button
         val img_show_popup_athena = findViewById<View>(R.id.img_show_popup_athena) as ImageView
         val img_show_popup_logo = findViewById<View>(R.id.img_show_popup_logo) as ImageView
         val img_show_popup_info = findViewById<View>(R.id.img_show_popup_info) as ImageView
@@ -47,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         val btn_show_popup_armory = findViewById<View>(R.id.btn_show_popup_armory) as Button
         val btn_show_popup_library = findViewById<View>(R.id.btn_show_popup_library) as Button
+        val img_show_popup_theme = findViewById<View>(R.id.img_show_popup_theme) as ImageView
 
 
         btn_show_popup_armory.setOnClickListener {
@@ -63,8 +63,34 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        img_show_popup_theme.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.img_show_popup_theme, displayMetrics))
+
+        }
 
         //second quadrant
+
+
+        val btn_show_popup_tartarus = findViewById<View>(R.id.btn_show_popup_tartarus) as Button
+        val btn_show_popup_styx = findViewById<View>(R.id.btn_show_popup_styx) as Button
+
+
+        btn_show_popup_tartarus.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics))
+
+        }
+
+        btn_show_popup_styx.setOnClickListener {
+
+            val popUpTutorial = PopUpTutorial()
+            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics))
+
+        }
+
         //third quadrant
         //fourth quadrant
 
@@ -83,12 +109,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        btn_show_popup_tartarus.setOnClickListener {
 
-            val popUpTutorial = PopUpTutorial()
-            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics))
-
-        }
 
         img_show_popup_logo.setOnClickListener {
 
