@@ -3,7 +3,7 @@ package com.artemissoftware.athenaonboard
 import android.graphics.Point
 import android.util.DisplayMetrics
 
-class PopUpPoint (private val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayMetrics: DisplayMetrics){
+class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayMetrics: DisplayMetrics){
 
     private val calculatedOffsetX: Int = calculateOffsetX(offsetX)
     private var calculatedOffsetY =  calculateOffsetY(offsetY)
@@ -90,11 +90,8 @@ class PopUpPoint (private val point: Point, offsetX: Int = 0, offsetY: Int = 0, 
         else if(fourthQuadrant){
             //result = point.x - calculatedOffsetX
         }
-
-
-
-
-
     }
+
+
 
 }

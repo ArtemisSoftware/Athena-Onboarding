@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/armory"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/txt_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
     <ImageView
         android:id="@+id/img_show_popup_theme"
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/library"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/txt_title"
         app:layout_constraintTop_toBottomOf="@+id/btn_show_popup_armory" />
 
 
@@ -141,6 +141,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <include layout="@layout/view_dim"/>
+    <include
+        android:id="@+id/layout_dim"
+        android:visibility="gone"
+        layout="@layout/view_dim"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
