@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupWindow
+import android.widget.TextView
 
 
 class PopUpTutorial {
@@ -137,4 +138,56 @@ class PopUpTutorial {
         }
     }
 
+
+
+    fun showPopupWindow(popUpPoint: PopUpPoint, view: View, popUpWindowData: PopUpWindowData){
+
+        val popupWidth =  ViewGroup.LayoutParams.WRAP_CONTENT
+        val popupHeight =  ViewGroup.LayoutParams.WRAP_CONTENT
+
+        // Inflate the popup_layout.xml
+        //val viewGroup = context.findViewById<View>(R.id.popup) as ConstraintLayout
+        val layoutInflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layout: View = layoutInflater.inflate(popUpWindowData.layout, null)
+
+        (layout.findViewById<View>(R.id.txt_title) as TextView).text = popUpWindowData.title
+        (layout.findViewById<View>(R.id.txt_description) as TextView).text = popUpWindowData.description
+
+
+        // Creating the PopupWindow
+        val popup = PopupWindow(view)
+        popup.contentView = layout
+        popup.width = popupWidth
+        popup.height = popupHeight
+        popup.isFocusable = true
+
+
+        popup.getContentView (). measure (0, 0);
+        val mPopupWindowHeight = popup.getContentView (). getMeasuredHeight ();
+        val mPopupWindowWidth = popup.getContentView (). getMeasuredWidth ();
+
+
+        popUpPoint.updateOffsets(mPopupWindowWidth, mPopupWindowHeight)
+
+
+        // Clear the default translucent background
+        popup.setBackgroundDrawable(BitmapDrawable())
+
+        // Set an elevation value for popup window
+        // Call requires API level 21
+        if(Build.VERSION.SDK_INT>=21){
+            popup.elevation = 15.0f;
+        }
+
+        // Displaying the popup at the specified location, + offsets.
+        //popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
+
+        popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
+
+        //Handler for clicking on the inactive zone of the window
+        layout.setOnTouchListener { v, event -> //Close the window when clicked
+            popup.dismiss()
+            true
+        }
+    }
 }
