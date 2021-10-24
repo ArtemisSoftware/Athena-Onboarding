@@ -28,7 +28,6 @@ import android.graphics.drawable.LayerDrawable
 class MainActivity : AppCompatActivity() {
 
 
-    lateinit var btn_show_popup_armory: View
     var popupTutorialManager: PopupTutorialManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,67 +53,37 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        //first quadrant
-
-        btn_show_popup_armory = findViewById<View>(R.id.btn_show_popup_armory) as Button
-
-
-        val btn_show_popup_library = findViewById<View>(R.id.btn_show_popup_library) as Button
-        val img_show_popup_theme = findViewById<View>(R.id.img_show_popup_theme) as ImageView
-
-
-//        btn_show_popup_armory.setOnClickListener {
+//        //second quadrant
 //
-//            val popUpTutorial = PopUpTutorial()
-//            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_armory, displayMetrics))
 //
-//        }
+        val btn_show_popup_tartarus = findViewById<View>(R.id.btn_show_popup_tartarus) as Button
+        val btn_show_popup_styx = findViewById<View>(R.id.btn_show_popup_styx) as Button
 
 
-
-
-
-
-//        btn_show_popup_library.setOnClickListener {
-//
-//            val popUpTutorial = PopUpTutorial()
-//            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_library, displayMetrics))
-//
-//        }
-
-        img_show_popup_theme.setOnClickListener {
+        btn_show_popup_tartarus.setOnClickListener {
 
             val popUpTutorial_3 = PopUpTutorial(
-                view = findViewById<View>(R.id.img_show_popup_theme),
-                popUpPoint = getPopUpPoint(R.id.img_show_popup_theme, displayMetrics),
+                view = findViewById<View>(R.id.btn_show_popup_tartarus),
+                popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
                 popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
             )
 
             popUpTutorial_3.showPopupWindow({})
+
         }
 
+        btn_show_popup_styx.setOnClickListener {
+
+            val popUpTutorial_3 = PopUpTutorial(
+                view = findViewById<View>(R.id.btn_show_popup_styx),
+                popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
+                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+            )
+
+            popUpTutorial_3.showPopupWindow({})
 
 
-//        //second quadrant
-//
-//
-//        val btn_show_popup_tartarus = findViewById<View>(R.id.btn_show_popup_tartarus) as Button
-//        val btn_show_popup_styx = findViewById<View>(R.id.btn_show_popup_styx) as Button
-//
-//
-//        btn_show_popup_tartarus.setOnClickListener {
-//
-//            val popUpTutorial = PopUpTutorial()
-//            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics))
-//
-//        }
-//
-//        btn_show_popup_styx.setOnClickListener {
-//
-//            val popUpTutorial = PopUpTutorial()
-//            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics))
-//
-//        }
+        }
 //
 //        //third quadrant
 //        //fourth quadrant
@@ -176,38 +145,96 @@ class MainActivity : AppCompatActivity() {
 
         (findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
 
-        val popUpTutorial_1 = PopUpTutorial(
-            view = btn_show_popup_armory,
+        val popUpTutorial_quandrant_1_1 = PopUpTutorial(
+            view = findViewById<View>(R.id.btn_show_popup_armory),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_armory, displayMetrics),
             popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia")
         )
 
 
-        val popUpTutorial_2 = PopUpTutorial(
+        val popUpTutorial_quandrant_1_2 = PopUpTutorial(
             view = findViewById<View>(R.id.btn_show_popup_library),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_library, displayMetrics),
             popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet.")
         )
 
 
-        val popUpTutorial_3 = PopUpTutorial(
+        val popUpTutorial_quandrant_1_3 = PopUpTutorial(
             view = findViewById<View>(R.id.img_show_popup_theme),
             popUpPoint = getPopUpPoint(R.id.img_show_popup_theme, displayMetrics),
             popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
         )
 
-        val popUpTutorial_4 = PopUpTutorial(
+        val popUpTutorial_quandrant_1_4 = PopUpTutorial(
             view = findViewById<View>(R.id.txt_title),
             popUpPoint = getPopUpPoint(R.id.txt_title, displayMetrics),
             popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
         )
 
 
+        val popUpTutorial_quandrant_1_5 = PopUpTutorial(
+            view = findViewById<View>(R.id.txt_quadrant_1),
+            popUpPoint = getPopUpPoint(R.id.txt_quadrant_1, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+        )
+
+
+        val popUpTutorial_quandrant_2_1 = PopUpTutorial(
+            view = findViewById<View>(R.id.btn_show_popup_tartarus),
+            popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 5", "Candidate changes in 2021 Moderator Election – review your ballot")
+        )
+
+        val popUpTutorial_quandrant_2_2 = PopUpTutorial(
+            view = findViewById<View>(R.id.btn_show_popup_styx),
+            popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 6", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+        )
+
+
+
+
+        val popUpTutorial_quandrant_3_1 = PopUpTutorial(
+            view = findViewById<View>(R.id.img_show_popup_athena),
+            popUpPoint = getPopUpPoint(R.id.img_show_popup_athena, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 5", "Candidate changes in 2021 Moderator Election – review your ballot")
+        )
+
+        val popUpTutorial_quandrant_3_2 = PopUpTutorial(
+            view = findViewById<View>(R.id.btn_show_popup_help),
+            popUpPoint = getPopUpPoint(R.id.btn_show_popup_help, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 6", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+        )
+
+
+
+        val popUpTutorial_quandrant_4_1 = PopUpTutorial(
+            view = findViewById<View>(R.id.img_show_popup_logo),
+            popUpPoint = getPopUpPoint(R.id.img_show_popup_logo, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 5", "Candidate changes in 2021 Moderator Election – review your ballot")
+        )
+
+        val popUpTutorial_quandrant_4_2 = PopUpTutorial(
+            view = findViewById<View>(R.id.img_show_popup_info),
+            popUpPoint = getPopUpPoint(R.id.img_show_popup_info, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 6", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+        )
+
+
+
+
         popupTutorialManager = PopupTutorialManager(onConclude =  {
             (findViewById<View>(R.id.layout_dim)).visibility = View.GONE
 
-        })
-        popupTutorialManager!!.execute(listOf<PopUpTutorial>(popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4))
+        }).apply {
+            execute(listOf<PopUpTutorial>(
+                //popUpTutorial_quandrant_1_1, popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
+                //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
+                popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
+                popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2
+            ))
+        }
+        //popupTutorialManager!!.execute(listOf<PopUpTutorial>(popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4))
 
 //        btn_show_popup_armory.performClick()
     }

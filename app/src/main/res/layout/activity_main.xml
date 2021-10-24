@@ -9,6 +9,7 @@
 
 
 
+    <!--    first quadrant-->
 
     <TextView
         android:id="@+id/txt_title"
@@ -19,9 +20,6 @@
         android:text="@string/start_the_onboarding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--    first quadrant-->
 
     <Button
         android:id="@+id/btn_show_popup_armory"
@@ -44,8 +42,78 @@
         app:layout_constraintTop_toTopOf="@+id/btn_show_popup_library"
         app:tint="@color/teal_200" />
 
+
+    <Button
+        android:id="@+id/btn_show_popup_library"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/library"
+        app:layout_constraintStart_toStartOf="@+id/txt_title"
+        app:layout_constraintTop_toBottomOf="@+id/btn_show_popup_armory" />
+
+
+    <TextView
+        android:id="@+id/txt_quadrant_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/start_the_onboarding"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_olympus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
     <!--    second quadrant-->
+
+    <Button
+        android:id="@+id/btn_show_popup_styx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/to_styx"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_tartarus"
+        app:layout_constraintStart_toStartOf="@+id/btn_show_popup_tartarus" />
+
+    <Button
+        android:id="@+id/btn_show_popup_tartarus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/to_tartarus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <!--    third quadrant-->
+
+
+
+    <ImageView
+        android:id="@+id/img_show_popup_athena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/black"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/teal_200" />
+
+
+    <Button
+        android:id="@+id/btn_show_popup_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
     <!--    fourth quadrant-->
 
 
@@ -76,58 +144,10 @@
         app:tint="@color/teal_200" />
 
 
-    <Button
-        android:id="@+id/btn_show_popup_library"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/library"
-        app:layout_constraintStart_toStartOf="@+id/txt_title"
-        app:layout_constraintTop_toBottomOf="@+id/btn_show_popup_armory" />
 
 
-    <ImageView
-        android:id="@+id/img_show_popup_athena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/black"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_help"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/teal_200" />
 
 
-    <Button
-        android:id="@+id/btn_show_popup_help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/help"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-    <Button
-        android:id="@+id/btn_show_popup_styx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/to_styx"
-        app:layout_constraintBottom_toTopOf="@+id/btn_show_popup_tartarus"
-        app:layout_constraintStart_toStartOf="@+id/btn_show_popup_tartarus" />
-
-    <Button
-        android:id="@+id/btn_show_popup_tartarus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/to_tartarus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button

@@ -217,19 +217,30 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
         val contraintLayer = (layout.findViewById<View>(R.id.constraint_root) as ConstraintLayout)
 
         val arrow_top = (layout.findViewById<View>(R.id.img_arrow_top) as ImageView)
+        val arrow_top_right = (layout.findViewById<View>(R.id.img_arrow_top_right) as ImageView)
         val arrow_bottom = (layout.findViewById<View>(R.id.img_arrow_bottom) as ImageView)
+        val arrow_bottom_right = (layout.findViewById<View>(R.id.img_arrow_bottom_right) as ImageView)
 
-        arrow_top.visibility = popUpPoint.arrowTopVisibility()
-        arrow_bottom.visibility = popUpPoint.arrowBottomVisibility()
+        arrow_top.visibility = popUpPoint._arrowTopVisibility
+        arrow_top_right.visibility = popUpPoint._arrowTopRightVisibility
+        arrow_bottom.visibility = popUpPoint._arrowBottomVisibility
+        arrow_bottom_right.visibility = popUpPoint._arrowBottomRightVisibility
 
         val set = ConstraintSet()
         set.clone(contraintLayer)
 
-        set.connect(arrow_top.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START,(popUpPoint.point.x/ 2)  - 8 + 12 )
-        set.setMargin(arrow_top.getId(), ConstraintSet.START, (popUpPoint.point.x/ 2) - 8 + 12 );
+        set.connect(arrow_top.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpPoint._arrowOffset)
+        set.setMargin(arrow_top.getId(), ConstraintSet.START, popUpPoint._arrowOffset);
 
-        set.connect(arrow_bottom.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START,(popUpPoint.point.x/ 2)  - 8 + 12 )
-        set.setMargin(arrow_bottom.getId(), ConstraintSet.START, (popUpPoint.point.x/ 2) - 8 + 12 );
+        set.connect(arrow_bottom.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpPoint._arrowOffset)
+        set.setMargin(arrow_bottom.getId(), ConstraintSet.START,  popUpPoint._arrowOffset);
+
+
+        set.connect(arrow_top_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpPoint._arrowOffset)
+        set.setMargin(arrow_top_right.getId(), ConstraintSet.END, popUpPoint._arrowOffset);
+
+        set.connect(arrow_bottom_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpPoint._arrowOffset)
+        set.setMargin(arrow_bottom_right.getId(), ConstraintSet.END,  popUpPoint._arrowOffset);
 
         set.applyTo(contraintLayer);
         contraintLayer.invalidate();
