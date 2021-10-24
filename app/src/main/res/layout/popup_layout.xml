@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popup"
+    android:background="@color/purple_700"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="8dp">
@@ -12,7 +13,7 @@
         android:id="@+id/constraint_root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:padding="8dp"
         android:background="@drawable/arrow_box_top_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,20 +21,30 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_arrow"
+            android:id="@+id/img_arrow_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/arrow_box"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/img_arrow_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arrow_box"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:padding="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +54,6 @@
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="Popup"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,23 +64,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
                 android:text="This is a simple popup for testing"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/txt_title"
                 app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
-            <Button
-                android:id="@+id/btn_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="Close"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_title"
-                app:layout_constraintTop_toBottomOf="@+id/txt_description" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

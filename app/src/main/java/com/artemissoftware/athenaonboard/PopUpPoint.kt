@@ -2,6 +2,7 @@ package com.artemissoftware.athenaonboard
 
 import android.graphics.Point
 import android.util.DisplayMetrics
+import android.view.View
 
 class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayMetrics: DisplayMetrics){
 
@@ -93,5 +94,44 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayM
     }
 
 
+    fun arrowTopVisibility(): Int {
+
+        var visibility = View.GONE
+
+        if(firstQuadrant){
+            visibility = View.VISIBLE
+        }
+        else if(secondQuadrant){
+
+        }
+        else if(thirdQuadrant){
+
+        }
+        else if(fourthQuadrant){
+
+        }
+
+        return visibility
+    }
+
+    fun arrowBottomVisibility(): Int{
+
+        var visibility = View.GONE
+
+        if(firstQuadrant){
+            visibility = View.GONE
+        }
+        else if(secondQuadrant){
+
+        }
+        else if(thirdQuadrant){
+
+        }
+        else if(fourthQuadrant){
+
+        }
+
+        return visibility
+    }
 
 }

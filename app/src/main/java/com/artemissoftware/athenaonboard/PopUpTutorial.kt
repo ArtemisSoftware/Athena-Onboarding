@@ -92,10 +92,10 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
         popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y)
 
         // Getting a reference to Close button, and close the popup when clicked.
-        val close = layout.findViewById<View>(R.id.btn_close) as Button
-        close.setOnClickListener {
-            popup.dismiss()
-        }
+//        val close = layout.findViewById<View>(R.id.btn_close) as Button
+//        close.setOnClickListener {
+//            popup.dismiss()
+//        }
     }
 
 
@@ -141,10 +141,10 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 
 
         // Getting a reference to Close button, and close the popup when clicked.
-        val close = layout.findViewById<View>(R.id.btn_close) as Button
-        close.setOnClickListener {
-            popup.dismiss()
-        }
+//        val close = layout.findViewById<View>(R.id.btn_close) as Button
+//        close.setOnClickListener {
+//            popup.dismiss()
+//        }
     }
 
 
@@ -216,55 +216,23 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 
         val contraintLayer = (layout.findViewById<View>(R.id.constraint_root) as ConstraintLayout)
 
-        val arrow = (layout.findViewById<View>(R.id.img_arrow) as ImageView)
+        val arrow_top = (layout.findViewById<View>(R.id.img_arrow_top) as ImageView)
+        val arrow_bottom = (layout.findViewById<View>(R.id.img_arrow_bottom) as ImageView)
+
+        arrow_top.visibility = popUpPoint.arrowTopVisibility()
+        arrow_bottom.visibility = popUpPoint.arrowBottomVisibility()
 
         val set = ConstraintSet()
         set.clone(contraintLayer)
-        //set.constrainWidth(arrow.getId(), ConstraintSet.MATCH_CONSTRAINT)
 
-        set.connect(arrow.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START,(popUpPoint.point.x/ 2)  - 8 + 12 )
-        set.setMargin(arrow.getId(), ConstraintSet.START, (popUpPoint.point.x/ 2) - 8 + 12 );
+        set.connect(arrow_top.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START,(popUpPoint.point.x/ 2)  - 8 + 12 )
+        set.setMargin(arrow_top.getId(), ConstraintSet.START, (popUpPoint.point.x/ 2) - 8 + 12 );
+
+        set.connect(arrow_bottom.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START,(popUpPoint.point.x/ 2)  - 8 + 12 )
+        set.setMargin(arrow_bottom.getId(), ConstraintSet.START, (popUpPoint.point.x/ 2) - 8 + 12 );
 
         set.applyTo(contraintLayer);
         contraintLayer.invalidate();
-
-
-//        val res = view.context.getResources();
-//        val drawable = res.getDrawable(R.drawable.arrow_box_top_left) as LayerDrawable
-//        val id = drawable.getId(1)
-//        val layer = drawable.findDrawableByLayerId(id)
-//
-
-
-
-//
-
-
-//
-//
-//        var layerDrawable: LayerDrawable = lolo.getBackground() as LayerDrawable
-////        (layerDrawable.findDrawableByLayerId(layerDrawable.getId(1)) as RotateDrawable).updateBounds(left = 188)
-//        val ll = RotateDrawable()
-//
-//        ll.toDegrees = 90f
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            layerDrawable.addLayer(ll)
-//        }
-//        lolo.background = ll
-//
-////        var lolo_2 = layerDrawable.findDrawableByLayerId(layerDrawable.getId(1)) as RotateDrawable
-////        lolo_2.updateBounds(left = 8, right = 0, bottom = 0, top = -12)
-////
-//////
-//////        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//////            layerDrawable.setDrawable(1, lolo_2)
-//////        }
-////
-////        lolo.background = lolo_2
-//
-////        val layerDrawable = resources.getDrawable(R.drawable.arrow_box_top_left) as LayerDrawable
-////        val gradientDrawable = layerDrawable.findDrawableByLayerId(R.id.start_point) as GradientDrawable
-//
 
 
         // Creating the PopupWindow
