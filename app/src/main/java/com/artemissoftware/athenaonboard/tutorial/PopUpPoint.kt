@@ -1,4 +1,4 @@
-package com.artemissoftware.athenaonboard
+package com.artemissoftware.athenaonboard.tutorial
 
 import android.graphics.Point
 import android.util.DisplayMetrics

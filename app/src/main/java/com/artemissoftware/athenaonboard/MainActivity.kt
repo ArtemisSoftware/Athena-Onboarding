@@ -1,28 +1,16 @@
 package com.artemissoftware.athenaonboard
 
-import android.app.Activity
-import android.content.Context
-import android.content.res.Resources
 import android.graphics.Point
-import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import androidx.annotation.MainThread
-import androidx.constraintlayout.widget.ConstraintLayout
 import android.util.DisplayMetrics
 import android.view.*
-import android.widget.ImageView
-import android.R.color
 
-import android.graphics.drawable.GradientDrawable
-
-import android.graphics.drawable.LayerDrawable
-
-
-
+import com.artemissoftware.athenaonboard.tutorial.PopUpPoint
+import com.artemissoftware.athenaonboard.tutorial.PopUpTutorial
+import com.artemissoftware.athenaonboard.tutorial.PopUpWindowData
+import com.artemissoftware.athenaonboard.tutorial.PopupTutorialManager
 
 
 class MainActivity : AppCompatActivity() {
@@ -230,7 +218,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun getPopUpPoint(viewId : Int, displayMetrics: DisplayMetrics): PopUpPoint{
+    private fun getPopUpPoint(viewId : Int, displayMetrics: DisplayMetrics): PopUpPoint {
 
         val location = IntArray(2)
         val view = findViewById<View>(viewId) as View
@@ -241,8 +229,6 @@ class MainActivity : AppCompatActivity() {
         // Get the x, y location and store it in the location[] array
         // location[0] = x, location[1] = y.
         view.getLocationOnScreen(location)
-
-        //Initialize the Point with x, and y positions
 
         //Initialize the Point with x, and y positions
         val point = Point()

@@ -1,28 +1,21 @@
-package com.artemissoftware.athenaonboard
+package com.artemissoftware.athenaonboard.tutorial
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.ColorFilter
 import android.graphics.Point
-import android.graphics.drawable.*
 import android.os.Build
 import android.view.Gravity
 import android.view.View
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.drawable.updateBounds
-import android.graphics.Bitmap
 
 import android.graphics.drawable.BitmapDrawable
 
-import android.graphics.drawable.Drawable
 import android.util.Size
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
-
-
-
+import com.artemissoftware.athenaonboard.R
 
 
 class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, private val popUpWindowData: PopUpWindowData) {

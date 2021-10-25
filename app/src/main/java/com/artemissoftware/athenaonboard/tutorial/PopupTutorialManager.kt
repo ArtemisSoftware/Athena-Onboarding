@@ -1,4 +1,4 @@
-package com.artemissoftware.athenaonboard
+package com.artemissoftware.athenaonboard.tutorial
 
 class PopupTutorialManager(var executed: Boolean = false, private val onConclude: () -> Unit) {
 
