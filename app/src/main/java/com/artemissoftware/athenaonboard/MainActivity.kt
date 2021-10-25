@@ -65,10 +65,12 @@ class MainActivity : AppCompatActivity() {
             val popUpTutorial_3 = PopUpTutorial(
                 view = findViewById<View>(R.id.btn_show_popup_tartarus),
                 popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
-                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Tartarus", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
             )
 
-            popUpTutorial_3.showPopupWindow({})
+            popUpTutorial_3.showPopupWindow(it)
+
+//            popUpTutorial_3.showPopupWindow({})
 
         }
 
@@ -77,24 +79,17 @@ class MainActivity : AppCompatActivity() {
             val popUpTutorial_3 = PopUpTutorial(
                 view = findViewById<View>(R.id.btn_show_popup_styx),
                 popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
-                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
             )
 
-            popUpTutorial_3.showPopupWindow({})
+            popUpTutorial_3.showPopupWindow(it)
 
 
         }
 //
 //        //third quadrant
 //        //fourth quadrant
-//
-//        btn_show_popup_help.setOnClickListener {
-//
-//            val popUpTutorial = PopUpTutorial()
-//            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.btn_show_popup_help, displayMetrics))
-//
-//        }
-//
+
 //        btn_show_popup_olympus.setOnClickListener {
 //
 //            val popUpTutorial = PopUpTutorial()
@@ -111,14 +106,7 @@ class MainActivity : AppCompatActivity() {
 //            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.img_show_popup_logo, displayMetrics))
 //
 //        }
-//
-//        img_show_popup_athena.setOnClickListener {
-//
-//            val popUpTutorial = PopUpTutorial()
-//            popUpTutorial.showPopupWindow_v3(it, getPopUpPoint(R.id.img_show_popup_athena, displayMetrics))
-//
-//        }
-//
+
 //        img_show_popup_info.setOnClickListener {
 //
 //            val popUpTutorial = PopUpTutorial()
@@ -229,9 +217,9 @@ class MainActivity : AppCompatActivity() {
         }).apply {
             execute(listOf<PopUpTutorial>(
                 //popUpTutorial_quandrant_1_1, popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
-                //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
+                popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
                 popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
-                popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2
+                //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2
             ))
         }
         //popupTutorialManager!!.execute(listOf<PopUpTutorial>(popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4))

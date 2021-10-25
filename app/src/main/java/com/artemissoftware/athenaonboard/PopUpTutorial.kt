@@ -17,6 +17,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 
 import android.graphics.drawable.Drawable
+import android.util.Size
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
 
@@ -30,33 +31,70 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
     @SuppressLint("ClickableViewAccessibility")
     fun showPopupWindow(view: View){
 
-        //Create a View object yourself through inflater
-        val inflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val layout: View = inflater.inflate(R.layout.popup_layout, null)
+//        //Create a View object yourself through inflater
+//        val inflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//        val layout: View = inflater.inflate(R.layout.popup_layout, null)
+//
+//        //Specify the length and width through constants
+//        val width = LinearLayout.LayoutParams.MATCH_PARENT
+//        val height = LinearLayout.LayoutParams.MATCH_PARENT
+//
+//        //Make Inactive Items Outside Of PopupWindow
+//        val focusable = true
+//
+//
+//        //Create a window with our parameters
+//        val popupWindow = PopupWindow(layout, width, height, focusable)
+//
+//        //Set the location of the window on the screen
+//        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//
+//
+//        //Handler for clicking on the inactive zone of the window
+//
+//
+//        //Handler for clicking on the inactive zone of the window
+//        layout.setOnTouchListener { v, event -> //Close the window when clicked
+//            popupWindow.dismiss()
+//            true
+//        }
 
-        //Specify the length and width through constants
-        val width = LinearLayout.LayoutParams.MATCH_PARENT
-        val height = LinearLayout.LayoutParams.MATCH_PARENT
-
-        //Make Inactive Items Outside Of PopupWindow
-        val focusable = true
 
 
-        //Create a window with our parameters
-        val popupWindow = PopupWindow(layout, width, height, focusable)
+        PopupWindow(view.context).apply {
 
-        //Set the location of the window on the screen
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+            isOutsideTouchable = false
+            val inflater = LayoutInflater.from(view.context)
+
+            contentView = inflater.inflate(R.layout.popup_layout, null).apply {
+                measure(
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                )
+            }
 
 
-        //Handler for clicking on the inactive zone of the window
+        }.also {
 
+                popupWindow ->
+            // Absolute location of the anchor view
+            val location = IntArray(2).apply {
+                view.getLocationOnScreen(this)
+            }
+            val size = Size(
+                popupWindow.contentView.measuredWidth,
+                popupWindow.contentView.measuredHeight
+            )
+            popupWindow.showAtLocation(
+                view,
+                Gravity.TOP or Gravity.START,
+                location[0] - (size.width - view.width) / 2,
+                location[1] - size.height
+            )
 
-        //Handler for clicking on the inactive zone of the window
-        layout.setOnTouchListener { v, event -> //Close the window when clicked
-            popupWindow.dismiss()
-            true
         }
+
+
     }
 
     fun showPopupWindow_v2(view: View, p: Point){
@@ -274,7 +312,8 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
         // Displaying the popup at the specified location, + offsets.
         //popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
 
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
+        popup.showAtLocation(layout, Gravity.NO_GRAVITY, 0,-popUpPoint.offsetY)
+        //popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
 
         //Handler for clicking on the inactive zone of the window
         layout.setOnTouchListener { v, event -> //Close the window when clicked
@@ -283,5 +322,8 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
             true
         }
     }
+
+
+
 
 }

@@ -4,7 +4,7 @@ import android.graphics.Point
 import android.util.DisplayMetrics
 import android.view.View
 
-class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayMetrics: DisplayMetrics){
+class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val displayMetrics: DisplayMetrics){
 
     private val calculatedOffsetX: Int = calculateOffsetX(offsetX)
     private var calculatedOffsetY =  calculateOffsetY(offsetY)
@@ -60,13 +60,12 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayM
             _arrowOffset = (point.x/ 2)  + 4
         }
         else if(secondQuadrant){
-
+            _arrowOffset = (point.x/ 2)  + 4
         }
         else if(thirdQuadrant){
             _arrowOffset = (offsetX/ 2)  + 4
         }
         else if(fourthQuadrant){
-
             _arrowOffset = (offsetX/ 2)  + 4
         }
 
@@ -79,7 +78,12 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayM
     }
 
     private fun calculateOffsetY(offset: Int) : Int{
-        return offset// + (offset / 7)
+        return if(secondQuadrant || thirdQuadrant){
+            offset
+        }
+        else {
+            offset
+        }// + (offset / 7)
     }
 
 
@@ -111,7 +115,7 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, offsetY: Int = 0, displayM
             result = point.y + calculatedOffsetY
         }
         else if(secondQuadrant){
-            result = point.y - calculatedOffsetY - 100
+            result = (point.y/displayMetrics.density).toInt() + calculatedOffsetY  //point.y - (calculatedOffsetY/displayMetrics.density).toInt()// - 100
         }
         else if(thirdQuadrant){
             result = point.y - calculatedOffsetY
