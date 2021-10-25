@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.artemissoftware.athenaonboard.R
+import com.artemissoftware.athenaonboard.addOnWindowFocusChangeListener
 import com.artemissoftware.athenaonboard.getDisplayMetrics
 import com.artemissoftware.athenaonboard.tutorial.PopUpPoint
 import com.artemissoftware.athenaonboard.tutorial.PopUpTutorial
@@ -22,7 +23,12 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tutorial()
+
+        addOnWindowFocusChangeListener { hasFocus ->
+            tutorial()
+        }
+
+
     }
 
 
@@ -49,28 +55,16 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
         )
 
 
+        popupTutorialManager = PopupTutorialManager(onStart = {
+            //(findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
+        }, onConclude =  {
+            //(findViewById<View>(R.id.layout_dim)).visibility = View.GONE
 
-        view?.viewTreeObserver?.addOnWindowFocusChangeListener { hasFocus ->
-
-            popUpTutorial_2.showPopupWindow({})
-
+        }).apply {
+            execute(listOf<PopUpTutorial>(
+                popUpTutorial, popUpTutorial_2,
+            ))
         }
-
-
-
-//        getView()?.let { popUpTutorial.showPopupWindow(it) }
-//
-//
-//        popupTutorialManager = PopupTutorialManager(onStart = {
-//            //(findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
-//        }, onConclude =  {
-//            //(findViewById<View>(R.id.layout_dim)).visibility = View.GONE
-//
-//        }).apply {
-//            execute(listOf<PopUpTutorial>(
-//                //popUpTutorial, popUpTutorial_2,
-//            ))
-//        }
 
 
     }
@@ -80,9 +74,6 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
 
         val location = IntArray(2)
         val view = view?.findViewById<View>(viewId) as View
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
 
         // Get the x, y location and store it in the location[] array
         // location[0] = x, location[1] = y.
@@ -96,28 +87,6 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
         return PopUpPoint(point, view.width, view.height, view1.getDisplayMetrics())
     }
 
-
-
-
-//    private fun getPopUpPoint(viewId : Int, displayMetrics: DisplayMetrics): PopUpPoint {
-//
-//        val location = IntArray(2)
-//        val view = findViewById<View>(viewId) as View
-//
-//        // Get the x, y location and store it in the location[] array
-//        // location[0] = x, location[1] = y.
-//
-//        // Get the x, y location and store it in the location[] array
-//        // location[0] = x, location[1] = y.
-//        view.getLocationOnScreen(location)
-//
-//        //Initialize the Point with x, and y positions
-//        val point = Point()
-//        point!!.x = location[0]
-//        point!!.y = location[1]
-//
-//        return PopUpPoint(point, view.width, view.height, displayMetrics)
-//    }
 
 
 }
