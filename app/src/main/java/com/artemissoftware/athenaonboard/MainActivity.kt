@@ -11,6 +11,10 @@ import com.artemissoftware.athenaonboard.tutorial.PopUpPoint
 import com.artemissoftware.athenaonboard.tutorial.PopUpTutorial
 import com.artemissoftware.athenaonboard.tutorial.PopUpWindowData
 import com.artemissoftware.athenaonboard.tutorial.PopupTutorialManager
+import android.content.Intent
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +25,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+        val btn_show_popup_armory = findViewById<View>(R.id.btn_show_popup_armory) as Button
+
+        btn_show_popup_armory.setOnClickListener {
+
+
+            val k = Intent(this@MainActivity, ArmoryActivity::class.java)
+            startActivity(k)
+
+        }
 
 //
 //
@@ -119,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        (findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
+
 
         val popUpTutorial_quandrant_1_1 = PopUpTutorial(
             view = findViewById<View>(R.id.btn_show_popup_armory),
@@ -199,14 +215,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        popupTutorialManager = PopupTutorialManager(onConclude =  {
+        popupTutorialManager = PopupTutorialManager(onStart = {
+            (findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
+        }, onConclude =  {
             (findViewById<View>(R.id.layout_dim)).visibility = View.GONE
 
         }).apply {
             execute(listOf<PopUpTutorial>(
                 //popUpTutorial_quandrant_1_1, popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
-                popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
-                popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
+                //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
+                //popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
                 //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2
             ))
         }

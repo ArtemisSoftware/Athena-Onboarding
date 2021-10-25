@@ -1,6 +1,6 @@
 package com.artemissoftware.athenaonboard.tutorial
 
-class PopupTutorialManager(var executed: Boolean = false, private val onConclude: () -> Unit) {
+class PopupTutorialManager(var executed: Boolean = false,  private val onStart: () -> Unit, private val onConclude: () -> Unit) {
 
     var popups: List<PopUpTutorial>? = null
 
@@ -10,8 +10,12 @@ class PopupTutorialManager(var executed: Boolean = false, private val onConclude
 
         this.popups = popups
 
-        if(executed == false)
-            popups?.get(index)?.let { executeTutorial(it) }
+        if(executed == false && popups.size > 0)
+            popups?.get(index)?.let {
+
+                onStart()
+                executeTutorial(it)
+            }
     }
 
 
