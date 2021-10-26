@@ -18,7 +18,7 @@ class CardTutorialPopup (context: Context) : RelativePopupWindow(context) {
 
     init {
         @SuppressLint("InflateParams")
-        contentView = LayoutInflater.from(context).inflate(R.layout.popup_card_layout, null)
+        contentView = LayoutInflater.from(context).inflate(R.layout.popup_tutorial_card, null)
         width = ViewGroup.LayoutParams.WRAP_CONTENT
         height = ViewGroup.LayoutParams.WRAP_CONTENT
         isFocusable = true
@@ -27,6 +27,14 @@ class CardTutorialPopup (context: Context) : RelativePopupWindow(context) {
 
         // Disable default animation for circular reveal
         animationStyle = 0
+
+
+        addTutorial()
+    }
+
+
+    private fun addTutorial(){
+
     }
 
     override fun showOnAnchor(
@@ -57,16 +65,18 @@ class CardTutorialPopup (context: Context) : RelativePopupWindow(context) {
                 val dx = max(cx, measuredWidth - cx)
                 val dy = max(cy, measuredHeight - cy)
                 val finalRadius = hypot(dx.toFloat(), dy.toFloat())
-                CircularRevealCompat.createCircularReveal(
-                    this,
-                    cx.toFloat(),
-                    cy.toFloat(),
-                    0f,
-                    finalRadius
-                ).run {
-                    duration = 500
-                    start()
-                }
+
+                //for animation
+//                CircularRevealCompat.createCircularReveal(
+//                    this,
+//                    cx.toFloat(),
+//                    cy.toFloat(),
+//                    0f,
+//                    finalRadius
+//                ).run {
+//                    duration = 500
+//                    start()
+//                }
             }
         }
     }

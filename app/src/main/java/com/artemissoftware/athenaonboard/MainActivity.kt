@@ -124,20 +124,29 @@ class MainActivity : AppCompatActivity() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
 
 
-        val popup = ExampleCardPopup(findViewById<View>(R.id.btn_show_popup_olympus).context)
-        popup.width =ViewGroup.LayoutParams.WRAP_CONTENT
-        popup.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//        val popup = ExampleCardPopup(findViewById<View>(R.id.btn_show_popup_olympus).context)
+//        popup.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popup.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//
+//
+//        popup.showOnAnchor(findViewById<View>(R.id.btn_show_popup_olympus), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
+//
+//
+//        val popup2 = ExampleCardPopup(findViewById<View>(R.id.btn_show_popup_tartarus).context)
+//        popup2.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popup2.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//
+//
+//        popup2.showOnAnchor(findViewById<View>(R.id.btn_show_popup_tartarus), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, 0, -60, true)
 
 
-        //-popup.showOnAnchor(findViewById<View>(R.id.btn_show_popup_olympus), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
+        val popUpTutorial_quandrant_1_1 = CardTutorialPopup(findViewById<View>(R.id.txt_title).context)
+        popUpTutorial_quandrant_1_1.width =ViewGroup.LayoutParams.WRAP_CONTENT
+        popUpTutorial_quandrant_1_1.height  = ViewGroup.LayoutParams.WRAP_CONTENT
 
 
-        val popup2 = ExampleCardPopup(findViewById<View>(R.id.btn_show_popup_tartarus).context)
-        popup2.width =ViewGroup.LayoutParams.WRAP_CONTENT
-        popup2.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+        popUpTutorial_quandrant_1_1.showOnAnchor(findViewById<View>(R.id.txt_title), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
 
-
-        popup2.showOnAnchor(findViewById<View>(R.id.btn_show_popup_tartarus), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, 0, -60, true)
 
 //
 //        val displayMetrics = DisplayMetrics()
