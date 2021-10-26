@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_1 = PopupWindowData(
             anchor = findViewById<View>(R.id.txt_title),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial Title",
             description =  getString(R.string.lorem_ipsum_pequeno),
             displayMetrics = getDisplayMetrics(),
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_2 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_armory),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial armory",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_3 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_library),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial library",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_4 = PopupWindowData(
             anchor = findViewById<View>(R.id.img_show_popup_theme),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial theme",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_5 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_styx),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial styx",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_6 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_tartarus),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial tartarus",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_7 = PopupWindowData(
             anchor = findViewById<View>(R.id.img_show_popup_logo),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "logo",
             description =  getString(R.string.lorem_ipsum_muito_pequeno),
             displayMetrics = getDisplayMetrics(),
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_8 = PopupWindowData(
             anchor = findViewById<View>(R.id.img_show_popup_info),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial info",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_9 = PopupWindowData(
             anchor = findViewById<View>(R.id.img_show_popup_athena),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial athena",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity() {
 
         val popupWindowData_10 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_help),
-            layout = R.layout.popup_tutorial_card,
+            layout = R.layout.test_test,
             title = "Tutorial help",
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),

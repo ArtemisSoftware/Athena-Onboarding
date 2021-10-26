@@ -1,5 +1,7 @@
 package com.artemissoftware.athenaonboard
 
+import android.R.attr
+import android.R.attr.*
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Rect
@@ -16,6 +18,9 @@ import com.google.android.material.circularreveal.cardview.CircularRevealCardVie
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 import kotlin.math.hypot
 import kotlin.math.max
+
+import android.view.ViewGroup.MarginLayoutParams
+
 
 class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupWindow(popUpWindowData_.anchor.context) {
 
@@ -79,7 +84,6 @@ class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupW
 
 //        set.connect(arrow_top_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
 //        set.setMargin(arrow_top_right.getId(), ConstraintSet.END, popUpWindowData_._arrowOffset);
-
 //        set.connect(arrow_bottom_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
 //        set.setMargin(arrow_bottom_right.getId(), ConstraintSet.END,  popUpWindowData_._arrowOffset);
 

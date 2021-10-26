@@ -13,4 +13,9 @@
     <color name="white_92">#FFD3D3D3</color>
     <color name="white_93">#80FFFFFF</color>
     <color name="clrFullTrWhite">#00FFFFFF</color>
+
+
+    <color name="cor_fundo">#99000000</color>
+
+
 </resources>

@@ -56,11 +56,11 @@ class PopupWindowData(val anchor: View, val layout: Int, val title: String, val 
 
             if(horizPos == RelativePopupWindow.HorizontalPosition.RIGHT){
                 _arrowTopRightVisibility = View.VISIBLE
-                _arrowOffset = 16
+                _arrowOffset = 20//16
             }
             else {
                 _arrowTopVisibility = View.VISIBLE
-                _arrowOffset = (point.x / 2) + 4
+                _arrowOffset = (point.x / 2) + 68//4
             }
         }
 
