@@ -4,6 +4,7 @@ import android.app.Activity
 import android.graphics.Point
 import android.util.DisplayMetrics
 import android.view.View
+import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 
 class PopupWindowData(val anchor: View, val layout: Int, val title: String, val description: String,
 
@@ -20,7 +21,7 @@ class PopupWindowData(val anchor: View, val layout: Int, val title: String, val 
     var _arrowTopRightVisibility = View.GONE
     var _arrowBottomVisibility = View.GONE
     var _arrowBottomRightVisibility = View.GONE
-
+    var _arrowOffset = 0
 
     init {
         id = anchor.id
@@ -51,18 +52,58 @@ class PopupWindowData(val anchor: View, val layout: Int, val title: String, val 
 
         //arrow visibility
 
-        if(firstQuadrant){
-            _arrowTopVisibility = View.VISIBLE
+        if(vertPos == RelativePopupWindow.VerticalPosition.BELOW){
+
+            if(horizPos == RelativePopupWindow.HorizontalPosition.RIGHT){
+                _arrowTopRightVisibility = View.VISIBLE
+                _arrowOffset = 16
+            }
+            else {
+                _arrowTopVisibility = View.VISIBLE
+                _arrowOffset = (point.x / 2) + 4
+            }
         }
-        else if(secondQuadrant){
-            _arrowBottomVisibility = View.VISIBLE
+
+        if(vertPos == RelativePopupWindow.VerticalPosition.ABOVE){
+
+            if(horizPos == RelativePopupWindow.HorizontalPosition.RIGHT){
+                _arrowBottomRightVisibility = View.VISIBLE
+            }
+            else {
+                _arrowBottomVisibility = View.VISIBLE
+                _arrowOffset = (point.x / 2) + 4
+            }
+
         }
-        else if(thirdQuadrant){
-            _arrowBottomRightVisibility = View.VISIBLE
-        }
-        else if(fourthQuadrant){
-            _arrowTopRightVisibility = View.VISIBLE
-        }
+
+
+//        if(firstQuadrant){
+//            _arrowTopVisibility = View.VISIBLE
+//        }
+//        else if(secondQuadrant){
+//            _arrowBottomVisibility = View.VISIBLE
+//        }
+//        else if(thirdQuadrant){
+//            _arrowBottomRightVisibility = View.VISIBLE
+//        }
+//        else if(fourthQuadrant){
+//            _arrowTopRightVisibility = View.VISIBLE
+//        }
+
+
+//        if(firstQuadrant){
+//            _arrowOffset = (point.x/ 2)  + 4
+//        }
+//        else if(secondQuadrant){
+//            _arrowOffset = (point.x/ 2)  + 4
+//        }
+//        else if(thirdQuadrant){
+//            _arrowOffset = (offsetX/ 2)  + 4
+//        }
+//        else if(fourthQuadrant){
+//            _arrowOffset = (offsetX/ 2)  + 4
+//        }
+
 
     }
 

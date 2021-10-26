@@ -65,7 +65,7 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
             anchor = requireView().findViewById<View>(R.id.txt_available),
             layout = R.layout.popup_tutorial_card,
             title = "Tutorial Title",
-            description =  getString(R.string.lorem_ipsum_pequeno),
+            description =  getString(R.string.lorem_ipsum_grande),
             displayMetrics = requireActivity().getDisplayMetrics(),
             vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
             horizPos = RelativePopupWindow.HorizontalPosition.CENTER,
@@ -90,25 +90,6 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
 
 
     }
-
-
-    private fun getPopUpPoint(view1: FragmentActivity, view: View?, viewId: Int): PopUpPoint {
-
-        val location = IntArray(2)
-        val view = view?.findViewById<View>(viewId) as View
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
-        view.getLocationOnScreen(location)
-
-        //Initialize the Point with x, and y positions
-        val point = Point()
-        point!!.x = location[0]
-        point!!.y = location[1]
-
-        return PopUpPoint(point, view.width, view.height, view1.getDisplayMetrics())
-    }
-
 
 
 }
