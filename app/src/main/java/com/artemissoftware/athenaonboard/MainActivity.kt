@@ -139,126 +139,126 @@ class MainActivity : AppCompatActivity() {
 
         popup2.showOnAnchor(findViewById<View>(R.id.btn_show_popup_tartarus), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, 0, -60, true)
 
-
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        val height = displayMetrics.heightPixels
-        val width = displayMetrics.widthPixels
-
-        val l = findViewById<View>(R.id.root);
-        val a: Int = l.getMeasuredWidth();
-        val b: Int = l.getWidth()
-
-
-
-        popupTutorialManager?.let {
-            return
-        }
-
-
-
-        val popUpTutorial_quandrant_1_1 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.btn_show_popup_armory),
-            popUpPoint = getPopUpPoint(R.id.btn_show_popup_armory, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Armory", getString(R.string.lorem_ipsum_pequeno))
-        )
-
-
-        val popUpTutorial_quandrant_1_2 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.btn_show_popup_library),
-            popUpPoint = getPopUpPoint(R.id.btn_show_popup_library, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Library", getString(R.string.lorem_ipsum_medio))
-        )
-
-
-        val popUpTutorial_quandrant_1_3 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.img_show_popup_theme),
-            popUpPoint = getPopUpPoint(R.id.img_show_popup_theme, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Theme img", getString(R.string.lorem_ipsum_mediano))
-        )
-
-        val popUpTutorial_quandrant_1_4 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.txt_title),
-            popUpPoint = getPopUpPoint(R.id.txt_title, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Title", getString(R.string.lorem_ipsum_grande))
-        )
-
-
-        val popUpTutorial_quandrant_1_5 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.txt_quadrant_1),
-            popUpPoint = getPopUpPoint(R.id.txt_quadrant_1, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Quadrant", getString(R.string.lorem_ipsum_grande))
-        )
-
-
-        val popUpTutorial_quandrant_2_1 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.btn_show_popup_tartarus),
-            popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial tartarus", "Candidate changes in 2021 Moderator Election – review your ballot")
-        )
-
-        val popUpTutorial_quandrant_2_2 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.btn_show_popup_styx),
-            popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx",
-                //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
-                    //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
-                    //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
-                        "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
-        )
-
-
-
-
-        val popUpTutorial_quandrant_3_1 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.img_show_popup_athena),
-            popUpPoint = getPopUpPoint(R.id.img_show_popup_athena, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial athena img", "Candidate changes in 2021 Moderator Election – review your ballot")
-        )
-
-        val popUpTutorial_quandrant_3_2 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.btn_show_popup_help),
-            popUpPoint = getPopUpPoint(R.id.btn_show_popup_help, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial help", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
-        )
-
-
-
-        val popUpTutorial_quandrant_4_1 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.img_show_popup_logo),
-            popUpPoint = getPopUpPoint(R.id.img_show_popup_logo, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial logo img", "Candidate changes in 2021 Moderator Election – review your ballot")
-        )
-
-        val popUpTutorial_quandrant_4_2 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.img_show_popup_info),
-            popUpPoint = getPopUpPoint(R.id.img_show_popup_info, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
-        )
-
-        val popUpTutorial_quandrant_4_3 = PopUpTutorial(
-            anchorView = findViewById<View>(R.id.txt_quadrant_4),
-            popUpPoint = getPopUpPoint(R.id.txt_quadrant_4, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
-        )
-
-
-        popupTutorialManager = PopupTutorialManager(onStart = {
-            (findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
-        }, onConclude =  {
-            (findViewById<View>(R.id.layout_dim)).visibility = View.GONE
-
-        }).apply {
-            execute(listOf<PopUpTutorial>(
-                //popUpTutorial_quandrant_1_1, //popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
-                //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
-                //popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
-                //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2, popUpTutorial_quandrant_4_3
-            ))
-        }
-        //popupTutorialManager!!.execute(listOf<PopUpTutorial>(popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4))
-
-//        btn_show_popup_armory.performClick()
+//
+//        val displayMetrics = DisplayMetrics()
+//        windowManager.defaultDisplay.getMetrics(displayMetrics)
+//        val height = displayMetrics.heightPixels
+//        val width = displayMetrics.widthPixels
+//
+//        val l = findViewById<View>(R.id.root);
+//        val a: Int = l.getMeasuredWidth();
+//        val b: Int = l.getWidth()
+//
+//
+//
+//        popupTutorialManager?.let {
+//            return
+//        }
+//
+//
+//
+//        val popUpTutorial_quandrant_1_1 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.btn_show_popup_armory),
+//            popUpPoint = getPopUpPoint(R.id.btn_show_popup_armory, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Armory", getString(R.string.lorem_ipsum_pequeno))
+//        )
+//
+//
+//        val popUpTutorial_quandrant_1_2 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.btn_show_popup_library),
+//            popUpPoint = getPopUpPoint(R.id.btn_show_popup_library, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Library", getString(R.string.lorem_ipsum_medio))
+//        )
+//
+//
+//        val popUpTutorial_quandrant_1_3 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.img_show_popup_theme),
+//            popUpPoint = getPopUpPoint(R.id.img_show_popup_theme, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Theme img", getString(R.string.lorem_ipsum_mediano))
+//        )
+//
+//        val popUpTutorial_quandrant_1_4 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.txt_title),
+//            popUpPoint = getPopUpPoint(R.id.txt_title, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Title", getString(R.string.lorem_ipsum_grande))
+//        )
+//
+//
+//        val popUpTutorial_quandrant_1_5 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.txt_quadrant_1),
+//            popUpPoint = getPopUpPoint(R.id.txt_quadrant_1, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Quadrant", getString(R.string.lorem_ipsum_grande))
+//        )
+//
+//
+//        val popUpTutorial_quandrant_2_1 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.btn_show_popup_tartarus),
+//            popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial tartarus", "Candidate changes in 2021 Moderator Election – review your ballot")
+//        )
+//
+//        val popUpTutorial_quandrant_2_2 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.btn_show_popup_styx),
+//            popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx",
+//                //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
+//                    //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
+//                    //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
+//                        "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+//        )
+//
+//
+//
+//
+//        val popUpTutorial_quandrant_3_1 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.img_show_popup_athena),
+//            popUpPoint = getPopUpPoint(R.id.img_show_popup_athena, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial athena img", "Candidate changes in 2021 Moderator Election – review your ballot")
+//        )
+//
+//        val popUpTutorial_quandrant_3_2 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.btn_show_popup_help),
+//            popUpPoint = getPopUpPoint(R.id.btn_show_popup_help, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial help", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+//        )
+//
+//
+//
+//        val popUpTutorial_quandrant_4_1 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.img_show_popup_logo),
+//            popUpPoint = getPopUpPoint(R.id.img_show_popup_logo, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial logo img", "Candidate changes in 2021 Moderator Election – review your ballot")
+//        )
+//
+//        val popUpTutorial_quandrant_4_2 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.img_show_popup_info),
+//            popUpPoint = getPopUpPoint(R.id.img_show_popup_info, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+//        )
+//
+//        val popUpTutorial_quandrant_4_3 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.txt_quadrant_4),
+//            popUpPoint = getPopUpPoint(R.id.txt_quadrant_4, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+//        )
+//
+//
+//        popupTutorialManager = PopupTutorialManager(onStart = {
+//            (findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
+//        }, onConclude =  {
+//            (findViewById<View>(R.id.layout_dim)).visibility = View.GONE
+//
+//        }).apply {
+//            execute(listOf<PopUpTutorial>(
+//                //popUpTutorial_quandrant_1_1, //popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
+//                //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
+//                //popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
+//                //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2, popUpTutorial_quandrant_4_3
+//            ))
+//        }
+//        //popupTutorialManager!!.execute(listOf<PopUpTutorial>(popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4))
+//
+////        btn_show_popup_armory.performClick()
     }
 
 
