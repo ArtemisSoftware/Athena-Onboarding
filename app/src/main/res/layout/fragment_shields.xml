@@ -7,6 +7,17 @@
     tools:context=".fragments.ShieldsFragment">
 
 
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="This are my shields"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ImageView
         android:id="@+id/img_shields"
         android:layout_width="wrap_content"
@@ -46,5 +57,11 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/img_shields"
         app:layout_constraintTop_toBottomOf="@+id/txt_1" />
+
+
+    <include
+        android:id="@+id/layout_dim"
+        android:visibility="gone"
+        layout="@layout/view_dim"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

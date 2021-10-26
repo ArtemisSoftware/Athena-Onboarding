@@ -7,12 +7,9 @@ import android.widget.Button
 import android.util.DisplayMetrics
 import android.view.*
 
-import com.artemissoftware.athenaonboard.tutorial.PopUpPoint
-import com.artemissoftware.athenaonboard.tutorial.PopUpTutorial
-import com.artemissoftware.athenaonboard.tutorial.PopUpWindowData
-import com.artemissoftware.athenaonboard.tutorial.PopupTutorialManager
 import android.content.Intent
 import android.util.TypedValue
+import com.artemissoftware.athenaonboard.tutorial.*
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 
 
@@ -63,32 +60,9 @@ class MainActivity : AppCompatActivity() {
         val btn_show_popup_styx = findViewById<View>(R.id.btn_show_popup_styx) as Button
 
 
-        btn_show_popup_tartarus.setOnClickListener {
 
-            val popUpTutorial_3 = PopUpTutorial(
-                anchorView = findViewById<View>(R.id.btn_show_popup_tartarus),
-                popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
-                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Tartarus", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
-            )
 
-            popUpTutorial_3.showPopupWindow(it)
 
-//            popUpTutorial_3.showPopupWindow({})
-
-        }
-
-        btn_show_popup_styx.setOnClickListener {
-
-            val popUpTutorial_3 = PopUpTutorial(
-                anchorView = findViewById<View>(R.id.btn_show_popup_styx),
-                popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
-                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
-            )
-
-            //popUpTutorial_3.showPopupWindow(it)
-            popUpTutorial_3.showPopupWindow({})
-
-        }
 //
 //        //third quadrant
 //        //fourth quadrant
@@ -140,14 +114,79 @@ class MainActivity : AppCompatActivity() {
 //        popup2.showOnAnchor(findViewById<View>(R.id.btn_show_popup_tartarus), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, 0, -60, true)
 
 
-        val popUpTutorial_quandrant_1_1 = CardTutorialPopup(findViewById<View>(R.id.txt_title).context)
-        popUpTutorial_quandrant_1_1.width =ViewGroup.LayoutParams.WRAP_CONTENT
-        popUpTutorial_quandrant_1_1.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+        popupTutorialManager?.let {
+            return
+        }
+
+        val popupWindowData_ = PopupWindowData(
+            anchor = findViewById<View>(R.id.txt_title),
+            layout = R.layout.popup_tutorial_card,
+            title = "Tutorial Title",
+            description =  getString(R.string.lorem_ipsum_pequeno),
+            displayMetrics = getDisplayMetrics(),
+            vertPos = RelativePopupWindow.VerticalPosition.BELOW,
+            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT
+        )
 
 
-        popUpTutorial_quandrant_1_1.showOnAnchor(findViewById<View>(R.id.txt_title), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
+        val popUpTutorial_quandrant_1_1 = CardTutorialPopup(popUpWindowData_ = popupWindowData_)
+
+        popupTutorialManager = PopupTutorialManager(onStart = {
+            (findViewById<View>(R.id.layout_dim)).visibility = View.VISIBLE
+        }, onConclude =  {
+            (findViewById<View>(R.id.layout_dim)).visibility = View.GONE
+
+        }).apply {
+            execute(listOf<RelativePopupWindow>(
+                popUpTutorial_quandrant_1_1
+                //popUpTutorial_quandrant_1_1, //popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
+                //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
+                //popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
+                //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2, popUpTutorial_quandrant_4_3
+            ))
+        }
 
 
+
+//        popUpTutorial_quandrant_1_1.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_1_1.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_1_1.showOnAnchor(findViewById<View>(R.id.txt_title), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
+
+
+
+//        val popUpTutorial_quandrant_1_1 = CardTutorialPopup(findViewById<View>(R.id.txt_title).context, getPopUpPoint(R.id.txt_title, getDisplayMetrics()), PopUpWindowData(R.layout.popup_layout, "Tutorial Title", getString(R.string.lorem_ipsum_pequeno)))
+//        popUpTutorial_quandrant_1_1.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_1_1.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_1_1.showOnAnchor(findViewById<View>(R.id.txt_title), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
+//
+//
+//
+//        val popUpTutorial_quandrant_2_2 = CardTutorialPopup(findViewById<View>(R.id.btn_show_popup_styx).context, getPopUpPoint(R.id.btn_show_popup_styx, getDisplayMetrics()), PopUpWindowData(R.layout.popup_layout, "Tutorial styx", getString(R.string.lorem_ipsum_medio)))
+//        popUpTutorial_quandrant_2_2.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_2_2.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_2_2.showOnAnchor(findViewById<View>(R.id.btn_show_popup_styx), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT,0, -92, true)
+//
+//
+//
+//        val popUpTutorial_quandrant_3_1 = CardTutorialPopup(findViewById<View>(R.id.img_show_popup_athena).context, getPopUpPoint(R.id.img_show_popup_athena, getDisplayMetrics()), PopUpWindowData(R.layout.popup_layout, "Tutorial athena img", getString(R.string.lorem_ipsum_mediano)))
+//        popUpTutorial_quandrant_3_1.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_3_1.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_3_1.showOnAnchor(findViewById<View>(R.id.img_show_popup_athena), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_RIGHT,0, -124, true)
+//
+//
+//
+//        val popUpTutorial_quandrant_4_2 = CardTutorialPopup(findViewById<View>(R.id.img_show_popup_info).context, getPopUpPoint(R.id.img_show_popup_info, getDisplayMetrics()), PopUpWindowData(R.layout.popup_layout, "Tutorial info img", getString(R.string.lorem_ipsum_grande)))
+//        popUpTutorial_quandrant_4_2.width =ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_4_2.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+//        popUpTutorial_quandrant_4_2.showOnAnchor(findViewById<View>(R.id.img_show_popup_info), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_RIGHT, true)
+//
+
+
+//        val popUpTutorial_quandrant_4_2 = PopUpTutorial(
+//            anchorView = findViewById<View>(R.id.img_show_popup_info),
+//            popUpPoint = getPopUpPoint(R.id.img_show_popup_info, displayMetrics),
+//            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+//        )
 //
 //        val displayMetrics = DisplayMetrics()
 //        windowManager.defaultDisplay.getMetrics(displayMetrics)

@@ -1,24 +1,28 @@
 package com.artemissoftware.athenaonboard
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.graphics.Color
 import android.graphics.Rect
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.circularreveal.CircularRevealCompat
+import android.widget.ImageView
+import android.widget.TextView
+import com.artemissoftware.athenaonboard.tutorial.PopupWindowData
 import com.google.android.material.circularreveal.cardview.CircularRevealCardView
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 import kotlin.math.hypot
 import kotlin.math.max
 
-class CardTutorialPopup (context: Context) : RelativePopupWindow(context) {
+class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupWindow(popUpWindowData_.anchor.context) {
+
+    var next: () -> Unit = {}
 
     init {
+
         @SuppressLint("InflateParams")
-        contentView = LayoutInflater.from(context).inflate(R.layout.popup_tutorial_card, null)
+        val layout = LayoutInflater.from(popUpWindowData_.anchor.context).inflate(popUpWindowData_.layout, null)
+
+        contentView = layout
         width = ViewGroup.LayoutParams.WRAP_CONTENT
         height = ViewGroup.LayoutParams.WRAP_CONTENT
         isFocusable = true
@@ -29,11 +33,34 @@ class CardTutorialPopup (context: Context) : RelativePopupWindow(context) {
         animationStyle = 0
 
 
-        addTutorial()
+        addTutorial(layout)
     }
 
 
-    private fun addTutorial(){
+    private fun addTutorial(layout: View){
+
+        (layout.findViewById<View>(R.id.txt_title) as TextView).text = popUpWindowData_.title
+        (layout.findViewById<View>(R.id.txt_description) as TextView).text = popUpWindowData_.description
+
+
+        val arrow_top = (layout.findViewById<View>(R.id.img_arrow_top) as ImageView)
+        val arrow_top_right = (layout.findViewById<View>(R.id.img_arrow_top_right) as ImageView)
+        val arrow_bottom = (layout.findViewById<View>(R.id.img_arrow_bottom) as ImageView)
+        val arrow_bottom_right = (layout.findViewById<View>(R.id.img_arrow_bottom_right) as ImageView)
+
+        arrow_top.visibility = popUpWindowData_._arrowTopVisibility
+        arrow_top_right.visibility = popUpWindowData_._arrowTopRightVisibility
+        arrow_bottom.visibility = popUpWindowData_._arrowBottomVisibility
+        arrow_bottom_right.visibility = popUpWindowData_._arrowBottomRightVisibility
+
+
+        //Handler for clicking on the inactive zone of the window
+        layout.setOnTouchListener { v, event -> //Close the window when clicked
+            this@CardTutorialPopup.dismiss()
+            next()
+            true
+        }
+
 
     }
 

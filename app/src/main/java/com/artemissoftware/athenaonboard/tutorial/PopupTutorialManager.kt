@@ -1,12 +1,17 @@
 package com.artemissoftware.athenaonboard.tutorial
 
+import android.view.View
+import com.artemissoftware.athenaonboard.CardTutorialPopup
+import com.artemissoftware.athenaonboard.R
+import com.labo.kaji.relativepopupwindow.RelativePopupWindow
+
 class PopupTutorialManager(var executed: Boolean = false,  private val onStart: () -> Unit, private val onConclude: () -> Unit) {
 
-    var popups: List<PopUpTutorial>? = null
+    var popups: List<RelativePopupWindow>? = null
 
     private var index = 0
 
-    fun execute(popups: List<PopUpTutorial>) {
+    fun execute(popups: List<RelativePopupWindow>) {
 
         this.popups = popups
 
@@ -19,9 +24,16 @@ class PopupTutorialManager(var executed: Boolean = false,  private val onStart: 
     }
 
 
-    private fun executeTutorial(tutorial: PopUpTutorial){
+    private fun executeTutorial(tutorial: RelativePopupWindow){
 
-        tutorial.showPopupWindow_final(::nextTutorial)
+        if(tutorial is CardTutorialPopup) {
+
+            tutorial.run {
+                next = { nextTutorial() }
+                showOnAnchor(popUpWindowData_.anchor, popUpWindowData_.vertPos, popUpWindowData_.horizPos, popUpWindowData_.offsetX, popUpWindowData_.offsetY, true)
+            }
+
+        }
     }
 
 
