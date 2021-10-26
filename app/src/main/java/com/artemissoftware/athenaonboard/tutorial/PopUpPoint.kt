@@ -2,6 +2,7 @@ package com.artemissoftware.athenaonboard.tutorial
 
 import android.graphics.Point
 import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.View
 
 class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val displayMetrics: DisplayMetrics){
@@ -9,10 +10,10 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val 
     private val calculatedOffsetX: Int = calculateOffsetX(offsetX)
     private var calculatedOffsetY =  calculateOffsetY(offsetY)
 
-    private var firstQuadrant: Boolean
-    private var secondQuadrant: Boolean
-    private var thirdQuadrant: Boolean
-    private var fourthQuadrant: Boolean
+    var firstQuadrant: Boolean = false
+    var secondQuadrant: Boolean = false
+    var thirdQuadrant: Boolean = false
+    var fourthQuadrant: Boolean = false
 
 
     var _x = 0
@@ -24,19 +25,20 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val 
     var _arrowOffset = 0
 
 
+    var gravity: Int = Gravity.NO_GRAVITY
 
 
     init {
 
-        val xRef = displayMetrics.widthPixels / 2
-        val yRef = displayMetrics.heightPixels / 2
+        val xRef = displayMetrics.widthPixels / displayMetrics.density / 2
+        val yRef = displayMetrics.heightPixels / displayMetrics.density /  2
 
         //quadrant
 
-        firstQuadrant = (point.x <= xRef && point.y <= yRef)
-        secondQuadrant = (point.x <= xRef && point.y >= yRef)
-        thirdQuadrant = (point.x >= xRef && point.y >= yRef)
-        fourthQuadrant = (point.x >= xRef && point.y <= yRef)
+        firstQuadrant = (point.x / 2 <= xRef && point.y /2 <= yRef)
+        secondQuadrant = (point.x / 2 <= xRef && point.y / 2 >= yRef)
+        thirdQuadrant = (point.x / 2 >= xRef && point.y / 2 >= yRef)
+        fourthQuadrant = (point.x /2 >= xRef && point.y <= yRef)
 
         //arrow visibility
 
@@ -70,6 +72,18 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val 
         }
 
 
+        //gravity
+
+        if(firstQuadrant){
+            gravity = Gravity.NO_GRAVITY
+        }
+        else if(secondQuadrant || thirdQuadrant){
+            gravity = Gravity.TOP or Gravity.START
+        }
+        else if(fourthQuadrant){
+            gravity = Gravity.NO_GRAVITY
+        }
+
     }
 
 
@@ -91,7 +105,7 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val 
 
         var result = 0
 
-        if(firstQuadrant){
+        if(firstQuadrant || fourthQuadrant){
              result = point.x + calculatedOffsetX
         }
         else if(secondQuadrant){
@@ -100,9 +114,7 @@ class PopUpPoint (val point: Point, offsetX: Int = 0, val offsetY: Int = 0, val 
         else if(thirdQuadrant){
              result = point.x - calculatedOffsetX
         }
-        else if(fourthQuadrant){
-            result = point.x - calculatedOffsetX
-        }
+
 
         return result
     }

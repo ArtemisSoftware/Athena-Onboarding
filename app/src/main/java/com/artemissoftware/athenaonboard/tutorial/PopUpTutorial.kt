@@ -18,7 +18,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import com.artemissoftware.athenaonboard.R
 
 
-class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, private val popUpWindowData: PopUpWindowData) {
+class PopUpTutorial(private val anchorView: View, private val popUpPoint: PopUpPoint, private val popUpWindowData: PopUpWindowData) {
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -129,7 +129,6 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 //        }
     }
 
-
     fun showPopupWindow_v3(view: View, popUpPoint: PopUpPoint){
 
         val popupWidth =  ViewGroup.LayoutParams.WRAP_CONTENT
@@ -177,8 +176,6 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 //            popup.dismiss()
 //        }
     }
-
-
 
     fun showPopupWindow(popUpPoint: PopUpPoint, view: View, popUpWindowData: PopUpWindowData){
 
@@ -232,6 +229,7 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
     }
 
 
+
     fun showPopupWindow(next: () -> Unit){
 
         val popupWidth =  ViewGroup.LayoutParams.WRAP_CONTENT
@@ -239,7 +237,7 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 
         // Inflate the popup_layout.xml
         //val viewGroup = context.findViewById<View>(R.id.popup) as ConstraintLayout
-        val layoutInflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layoutInflater = anchorView.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout: View = layoutInflater.inflate(popUpWindowData.layout, null)
 
         (layout.findViewById<View>(R.id.txt_title) as TextView).text = popUpWindowData.title
@@ -278,7 +276,7 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 
 
         // Creating the PopupWindow
-        val popup = PopupWindow(view)
+        val popup = PopupWindow(anchorView)
         popup.contentView = layout
         popup.width = popupWidth
         popup.height = popupHeight
@@ -286,8 +284,8 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
 
 
         popup.getContentView (). measure (0, 0);
-        val mPopupWindowHeight = popup.getContentView (). getMeasuredHeight ();
-        val mPopupWindowWidth = popup.getContentView (). getMeasuredWidth ();
+        val mPopupWindowHeight = popup.getContentView().getMeasuredHeight();
+        val mPopupWindowWidth = popup.getContentView().getMeasuredWidth ();
 
 
         popUpPoint.updateOffsets(mPopupWindowWidth, mPopupWindowHeight)
@@ -303,10 +301,7 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
         }
 
         // Displaying the popup at the specified location, + offsets.
-        //popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
-
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, 0,-popUpPoint.offsetY)
-        //popup.showAtLocation(layout, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
+        popup.showAtLocation(anchorView, Gravity.NO_GRAVITY, popUpPoint.x(), popUpPoint.y())
 
         //Handler for clicking on the inactive zone of the window
         layout.setOnTouchListener { v, event -> //Close the window when clicked
@@ -317,6 +312,137 @@ class PopUpTutorial(private val view: View, private val popUpPoint: PopUpPoint, 
     }
 
 
+
+
+
+    fun showPopupWindow_final(next: () -> Unit){
+
+
+        if(popUpPoint.firstQuadrant || popUpPoint.fourthQuadrant){
+            showPopupWindow_final_q_1_4(next)
+        }
+        else{
+            showPopupWindow_final_q_2_3(next)
+        }
+
+    }
+
+
+
+    fun showPopupWindow_final_q_1_4(next: () -> Unit){
+        showPopupWindow(next)
+    }
+
+    fun showPopupWindow_final_q_2_3(next: () -> Unit){
+
+
+        PopupWindow(anchorView.context).apply {
+
+            isOutsideTouchable = false
+            val inflater = LayoutInflater.from(anchorView.context)
+
+            val popupWindow = this
+
+            contentView = inflater.inflate(popUpWindowData.layout, null).apply {
+
+                formatArrow(this)
+
+                measure(
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                )
+
+                this.setOnTouchListener { v, event -> //Close the window when clicked
+                    popupWindow.dismiss()
+                    next()
+                    true
+                }
+            }
+
+        }.also { popupWindow ->
+
+
+            // Absolute location of the anchor view
+            val location = IntArray(2).apply {
+                anchorView.getLocationOnScreen(this)
+            }
+            val size = Size(
+                popupWindow.contentView.measuredWidth,
+                popupWindow.contentView.measuredHeight
+            )
+            popupWindow.showAtLocation(
+                anchorView,
+                //popUpPoint.gravity,
+                Gravity.TOP or Gravity.START,
+                location[0],
+                //popUpPoint.x()  /*- (size.width - anchorView.width) / 2 */,
+                //location[0] - (size.width - anchorView.width) / 2,
+
+                //popUpPoint.point.y - size.height - anchorView.height/* - (size.width + anchorView.height) / 2*/ ,
+                location[1]
+                //location[1] - size.height - 30
+
+            )
+
+        }
+
+    }
+
+
+
+    private fun formatArrow(layout: View){
+
+
+        val antes =  (layout.findViewById<View>(R.id.txt_description) as TextView)
+        antes.measure(0, 0);
+
+
+
+        (layout.findViewById<View>(R.id.txt_title) as TextView).text = popUpWindowData.title
+        (layout.findViewById<View>(R.id.txt_description) as TextView).text = popUpWindowData.description
+
+
+        val depois =  (layout.findViewById<View>(R.id.txt_description) as TextView)
+
+        val widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.AT_MOST)
+        val heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(57, View.MeasureSpec.UNSPECIFIED)
+
+        depois.measure(0, heightMeasureSpec);
+
+        val contraintLayer = (layout.findViewById<View>(R.id.constraint_root) as ConstraintLayout)
+
+        val arrow_top = (layout.findViewById<View>(R.id.img_arrow_top) as ImageView)
+        val arrow_top_right = (layout.findViewById<View>(R.id.img_arrow_top_right) as ImageView)
+        val arrow_bottom = (layout.findViewById<View>(R.id.img_arrow_bottom) as ImageView)
+        val arrow_bottom_right = (layout.findViewById<View>(R.id.img_arrow_bottom_right) as ImageView)
+
+        arrow_top.visibility = popUpPoint._arrowTopVisibility
+        arrow_top_right.visibility = popUpPoint._arrowTopRightVisibility
+        arrow_bottom.visibility = popUpPoint._arrowBottomVisibility
+        arrow_bottom_right.visibility = popUpPoint._arrowBottomRightVisibility
+
+        val set = ConstraintSet()
+        set.clone(contraintLayer)
+
+        set.connect(arrow_top.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpPoint._arrowOffset)
+        set.setMargin(arrow_top.getId(), ConstraintSet.START, popUpPoint._arrowOffset);
+
+        set.connect(arrow_bottom.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpPoint._arrowOffset)
+        set.setMargin(arrow_bottom.getId(), ConstraintSet.START,  popUpPoint._arrowOffset);
+
+
+        set.connect(arrow_top_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpPoint._arrowOffset)
+        set.setMargin(arrow_top_right.getId(), ConstraintSet.END, popUpPoint._arrowOffset);
+
+        set.connect(arrow_bottom_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpPoint._arrowOffset)
+        set.setMargin(arrow_bottom_right.getId(), ConstraintSet.END,  popUpPoint._arrowOffset);
+
+        set.applyTo(contraintLayer);
+        contraintLayer.invalidate();
+
+        layout.measure(0, heightMeasureSpec);
+        contraintLayer.measure(0, heightMeasureSpec);
+    }
 
 
 }

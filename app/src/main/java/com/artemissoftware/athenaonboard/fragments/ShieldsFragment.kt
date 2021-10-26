@@ -42,14 +42,14 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
 
 
         val popUpTutorial = PopUpTutorial(
-            view = requireView().findViewById<View>(R.id.img_shields),
-            popUpPoint = getPopUpPoint( requireActivity(), getView(), R.id.img_shields),
+            anchorView = requireView().findViewById<View>(R.id.img_shields),
+            popUpPoint = getPopUpPoint(requireActivity(), getView(), R.id.img_shields),
             popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia")
         )
 
 
         val popUpTutorial_2 = PopUpTutorial(
-            view = requireView().findViewById<View>(R.id.txt_available),
+            anchorView = requireView().findViewById<View>(R.id.txt_available),
             popUpPoint = getPopUpPoint( requireActivity(), getView(), R.id.txt_available),
             popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 2", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia")
         )

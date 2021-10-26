@@ -21,7 +21,7 @@ class PopupTutorialManager(var executed: Boolean = false,  private val onStart: 
 
     private fun executeTutorial(tutorial: PopUpTutorial){
 
-        tutorial.showPopupWindow(::nextTutorial)
+        tutorial.showPopupWindow_final(::nextTutorial)
     }
 
 

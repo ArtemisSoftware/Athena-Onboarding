@@ -10,4 +10,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="all_shields_available">All shields available</string>
+
+    <string name="lorem_ipsum_pequeno">Lorem ipsum dolor sit amet.</string>
+    <string name="lorem_ipsum_medio">Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. </string>
+    <string name="lorem_ipsum_mediano">Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est </string>
+    <string name="lorem_ipsum_grande">Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.</string>
+
+
 </resources>

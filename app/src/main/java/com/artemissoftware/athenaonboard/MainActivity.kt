@@ -12,9 +12,8 @@ import com.artemissoftware.athenaonboard.tutorial.PopUpTutorial
 import com.artemissoftware.athenaonboard.tutorial.PopUpWindowData
 import com.artemissoftware.athenaonboard.tutorial.PopupTutorialManager
 import android.content.Intent
-
-
-
+import android.util.TypedValue
+import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 
 
 class MainActivity : AppCompatActivity() {
@@ -67,9 +66,9 @@ class MainActivity : AppCompatActivity() {
         btn_show_popup_tartarus.setOnClickListener {
 
             val popUpTutorial_3 = PopUpTutorial(
-                view = findViewById<View>(R.id.btn_show_popup_tartarus),
+                anchorView = findViewById<View>(R.id.btn_show_popup_tartarus),
                 popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
-                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Tartarus", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Tartarus", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
             )
 
             popUpTutorial_3.showPopupWindow(it)
@@ -81,13 +80,13 @@ class MainActivity : AppCompatActivity() {
         btn_show_popup_styx.setOnClickListener {
 
             val popUpTutorial_3 = PopUpTutorial(
-                view = findViewById<View>(R.id.btn_show_popup_styx),
+                anchorView = findViewById<View>(R.id.btn_show_popup_styx),
                 popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
-                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+                popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
             )
 
-            popUpTutorial_3.showPopupWindow(it)
-
+            //popUpTutorial_3.showPopupWindow(it)
+            popUpTutorial_3.showPopupWindow({})
 
         }
 //
@@ -125,10 +124,31 @@ class MainActivity : AppCompatActivity() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
 
 
+        val popup = ExampleCardPopup(findViewById<View>(R.id.btn_show_popup_olympus).context)
+        popup.width =ViewGroup.LayoutParams.WRAP_CONTENT
+        popup.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+
+
+        //-popup.showOnAnchor(findViewById<View>(R.id.btn_show_popup_olympus), RelativePopupWindow.VerticalPosition.BELOW, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, true)
+
+
+        val popup2 = ExampleCardPopup(findViewById<View>(R.id.btn_show_popup_tartarus).context)
+        popup2.width =ViewGroup.LayoutParams.WRAP_CONTENT
+        popup2.height  = ViewGroup.LayoutParams.WRAP_CONTENT
+
+
+        popup2.showOnAnchor(findViewById<View>(R.id.btn_show_popup_tartarus), RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, 0, -60, true)
+
+
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val height = displayMetrics.heightPixels
         val width = displayMetrics.widthPixels
+
+        val l = findViewById<View>(R.id.root);
+        val a: Int = l.getMeasuredWidth();
+        val b: Int = l.getWidth()
+
 
 
         popupTutorialManager?.let {
@@ -138,81 +158,89 @@ class MainActivity : AppCompatActivity() {
 
 
         val popUpTutorial_quandrant_1_1 = PopUpTutorial(
-            view = findViewById<View>(R.id.btn_show_popup_armory),
+            anchorView = findViewById<View>(R.id.btn_show_popup_armory),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_armory, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Armory", getString(R.string.lorem_ipsum_pequeno))
         )
 
 
         val popUpTutorial_quandrant_1_2 = PopUpTutorial(
-            view = findViewById<View>(R.id.btn_show_popup_library),
+            anchorView = findViewById<View>(R.id.btn_show_popup_library),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_library, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Library", getString(R.string.lorem_ipsum_medio))
         )
 
 
         val popUpTutorial_quandrant_1_3 = PopUpTutorial(
-            view = findViewById<View>(R.id.img_show_popup_theme),
+            anchorView = findViewById<View>(R.id.img_show_popup_theme),
             popUpPoint = getPopUpPoint(R.id.img_show_popup_theme, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Theme img", getString(R.string.lorem_ipsum_mediano))
         )
 
         val popUpTutorial_quandrant_1_4 = PopUpTutorial(
-            view = findViewById<View>(R.id.txt_title),
+            anchorView = findViewById<View>(R.id.txt_title),
             popUpPoint = getPopUpPoint(R.id.txt_title, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Title", getString(R.string.lorem_ipsum_grande))
         )
 
 
         val popUpTutorial_quandrant_1_5 = PopUpTutorial(
-            view = findViewById<View>(R.id.txt_quadrant_1),
+            anchorView = findViewById<View>(R.id.txt_quadrant_1),
             popUpPoint = getPopUpPoint(R.id.txt_quadrant_1, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 1", "Lorem ipsum dolor sit amet. Eum distinctio distinctio vel alias odit qui galisum alias et delectus optio sed quia provident quod magni. Qui deleniti suscipit ab consequatur dolores est aliquid quae At dolores perferendis aut animi obcaecati hic reiciendis soluta.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial Quadrant", getString(R.string.lorem_ipsum_grande))
         )
 
 
         val popUpTutorial_quandrant_2_1 = PopUpTutorial(
-            view = findViewById<View>(R.id.btn_show_popup_tartarus),
+            anchorView = findViewById<View>(R.id.btn_show_popup_tartarus),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_tartarus, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 5", "Candidate changes in 2021 Moderator Election – review your ballot")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial tartarus", "Candidate changes in 2021 Moderator Election – review your ballot")
         )
 
         val popUpTutorial_quandrant_2_2 = PopUpTutorial(
-            view = findViewById<View>(R.id.btn_show_popup_styx),
+            anchorView = findViewById<View>(R.id.btn_show_popup_styx),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_styx, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 6", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial styx",
+                //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
+                    //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
+                    //"We help game developers make their browser games successful by building the market-leading casual browser games platform." +
+                        "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
         )
 
 
 
 
         val popUpTutorial_quandrant_3_1 = PopUpTutorial(
-            view = findViewById<View>(R.id.img_show_popup_athena),
+            anchorView = findViewById<View>(R.id.img_show_popup_athena),
             popUpPoint = getPopUpPoint(R.id.img_show_popup_athena, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 5", "Candidate changes in 2021 Moderator Election – review your ballot")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial athena img", "Candidate changes in 2021 Moderator Election – review your ballot")
         )
 
         val popUpTutorial_quandrant_3_2 = PopUpTutorial(
-            view = findViewById<View>(R.id.btn_show_popup_help),
+            anchorView = findViewById<View>(R.id.btn_show_popup_help),
             popUpPoint = getPopUpPoint(R.id.btn_show_popup_help, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 6", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial help", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
         )
 
 
 
         val popUpTutorial_quandrant_4_1 = PopUpTutorial(
-            view = findViewById<View>(R.id.img_show_popup_logo),
+            anchorView = findViewById<View>(R.id.img_show_popup_logo),
             popUpPoint = getPopUpPoint(R.id.img_show_popup_logo, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 5", "Candidate changes in 2021 Moderator Election – review your ballot")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial logo img", "Candidate changes in 2021 Moderator Election – review your ballot")
         )
 
         val popUpTutorial_quandrant_4_2 = PopUpTutorial(
-            view = findViewById<View>(R.id.img_show_popup_info),
+            anchorView = findViewById<View>(R.id.img_show_popup_info),
             popUpPoint = getPopUpPoint(R.id.img_show_popup_info, displayMetrics),
-            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial 6", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
         )
 
-
+        val popUpTutorial_quandrant_4_3 = PopUpTutorial(
+            anchorView = findViewById<View>(R.id.txt_quadrant_4),
+            popUpPoint = getPopUpPoint(R.id.txt_quadrant_4, displayMetrics),
+            popUpWindowData = PopUpWindowData(R.layout.popup_layout, "Tutorial info img", "We help game developers make their browser games successful by building the market-leading casual browser games platform.")
+        )
 
 
         popupTutorialManager = PopupTutorialManager(onStart = {
@@ -222,10 +250,10 @@ class MainActivity : AppCompatActivity() {
 
         }).apply {
             execute(listOf<PopUpTutorial>(
-                //popUpTutorial_quandrant_1_1, popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
+                //popUpTutorial_quandrant_1_1, //popUpTutorial_quandrant_1_2, popUpTutorial_quandrant_1_3, popUpTutorial_quandrant_1_4, popUpTutorial_quandrant_1_5,
                 //popUpTutorial_quandrant_2_1, popUpTutorial_quandrant_2_2,
                 //popUpTutorial_quandrant_3_1, popUpTutorial_quandrant_3_2,
-                //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2
+                //popUpTutorial_quandrant_4_1, popUpTutorial_quandrant_4_2, popUpTutorial_quandrant_4_3
             ))
         }
         //popupTutorialManager!!.execute(listOf<PopUpTutorial>(popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4))
@@ -236,24 +264,24 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun getPopUpPoint(viewId : Int, displayMetrics: DisplayMetrics): PopUpPoint {
-
-        val location = IntArray(2)
-        val view = findViewById<View>(viewId) as View
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
-        view.getLocationOnScreen(location)
-
-        //Initialize the Point with x, and y positions
-        val point = Point()
-        point!!.x = location[0]
-        point!!.y = location[1]
-
-        return PopUpPoint(point, view.width, view.height, displayMetrics)
-    }
+//    private fun getPopUpPoint(viewId : Int, displayMetrics: DisplayMetrics): PopUpPoint {
+//
+//        val location = IntArray(2)
+//        val view = findViewById<View>(viewId) as View
+//
+//        // Get the x, y location and store it in the location[] array
+//        // location[0] = x, location[1] = y.
+//
+//        // Get the x, y location and store it in the location[] array
+//        // location[0] = x, location[1] = y.
+//        view.getLocationOnScreen(location)
+//
+//        //Initialize the Point with x, and y positions
+//        val point = Point()
+//        point!!.x = location[0]
+//        point!!.y = location[1]
+//
+//        return PopUpPoint(point, view.width, view.height, displayMetrics)
+//    }
 
 }
