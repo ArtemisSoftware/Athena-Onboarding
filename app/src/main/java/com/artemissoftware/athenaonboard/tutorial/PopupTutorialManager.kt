@@ -1,8 +1,6 @@
 package com.artemissoftware.athenaonboard.tutorial
 
-import android.view.View
 import com.artemissoftware.athenaonboard.CardTutorialPopup
-import com.artemissoftware.athenaonboard.R
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 
 class PopupTutorialManager(var executed: Boolean = false,  private val onStart: () -> Unit, private val onConclude: () -> Unit) {
