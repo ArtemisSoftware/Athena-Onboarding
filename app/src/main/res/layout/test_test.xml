@@ -5,18 +5,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    android:id="@+id/circular_box"
+    android:backgroundTint="@android:color/transparent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/cor_fundo">
+    android:id="@+id/contraint_main_box"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_root"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:background="@drawable/ic_pop_up_triangle"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/purple_200"
             android:rotation="360"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:background="@drawable/ic_pop_up_triangle"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/teal_200"
             android:rotation="180"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -113,7 +118,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:background="@drawable/ic_pop_up_triangle"
-            android:backgroundTint="@color/white"
+
+            android:backgroundTint="@color/purple_200"
             android:rotation="180"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

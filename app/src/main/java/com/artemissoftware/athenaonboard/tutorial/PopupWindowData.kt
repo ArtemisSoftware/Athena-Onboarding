@@ -9,7 +9,8 @@ import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 class PopupWindowData(val anchor: View, val layout: Int, val title: String, val description: String,
 
                       val vertPos: Int, val horizPos: Int, val offsetX: Int = 0, val offsetY: Int = 0, val fitInScreen: Boolean = true,
-                      val displayMetrics: DisplayMetrics, private var id: Int = 0){
+                      val displayMetrics: DisplayMetrics, private var id: Int = 0,
+                      val arrowOffsetX: Int = 0, val boxPaddingRight: Int = 0, val boxPaddingLeft: Int = 0){
 
 
     var firstQuadrant: Boolean = false
@@ -56,22 +57,23 @@ class PopupWindowData(val anchor: View, val layout: Int, val title: String, val 
 
             if(horizPos == RelativePopupWindow.HorizontalPosition.RIGHT){
                 _arrowTopRightVisibility = View.VISIBLE
-                _arrowOffset = 20//16
+                _arrowOffset = 20 + arrowOffsetX//16
             }
             else {
                 _arrowTopVisibility = View.VISIBLE
-                _arrowOffset = (point.x / 2) + 68//4
+                _arrowOffset = (point.x / 2) + 68 + arrowOffsetX//4
             }
         }
 
         if(vertPos == RelativePopupWindow.VerticalPosition.ABOVE){
 
-            if(horizPos == RelativePopupWindow.HorizontalPosition.RIGHT){
+            if(horizPos == RelativePopupWindow.HorizontalPosition.RIGHT || horizPos == RelativePopupWindow.HorizontalPosition.ALIGN_RIGHT){
                 _arrowBottomRightVisibility = View.VISIBLE
+                _arrowOffset = 20 + arrowOffsetX//16
             }
             else {
                 _arrowBottomVisibility = View.VISIBLE
-                _arrowOffset = (point.x / 2) + 4
+                _arrowOffset = (point.x / 2) + 68// + arrowOffsetX
             }
 
         }

@@ -1,11 +1,8 @@
 package com.artemissoftware.athenaonboard
 
-import android.R.attr
 import android.R.attr.*
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.Rect
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +15,6 @@ import com.google.android.material.circularreveal.cardview.CircularRevealCardVie
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 import kotlin.math.hypot
 import kotlin.math.max
-
-import android.view.ViewGroup.MarginLayoutParams
 
 
 class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupWindow(popUpWindowData_.anchor.context) {
@@ -36,7 +31,9 @@ class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupW
         height = ViewGroup.LayoutParams.WRAP_CONTENT
         isFocusable = false
         isOutsideTouchable = false
-        setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        //setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        //setBackgroundDrawable()
+
 
         // Disable default animation for circular reveal
         animationStyle = 0
@@ -70,6 +67,14 @@ class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupW
             true
         }
 
+        val main = (layout.findViewById<View>(R.id.contraint_main_box) as ConstraintLayout)
+        main.setPadding(popUpWindowData_.boxPaddingLeft, 0,popUpWindowData_.boxPaddingRight, 0)
+
+
+
+
+
+
 
         val contraintLayer = (layout.findViewById<View>(R.id.constraint_root) as ConstraintLayout)
         val set = ConstraintSet()
@@ -77,18 +82,28 @@ class CardTutorialPopup (val popUpWindowData_: PopupWindowData) : RelativePopupW
 
         set.connect(arrow_top.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpWindowData_._arrowOffset)
         set.setMargin(arrow_top.getId(), ConstraintSet.START, popUpWindowData_._arrowOffset);
-
-        set.connect(arrow_bottom.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpWindowData_._arrowOffset)
-        set.setMargin(arrow_bottom.getId(), ConstraintSet.START,  popUpWindowData_._arrowOffset);
-
-
-//        set.connect(arrow_top_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
-//        set.setMargin(arrow_top_right.getId(), ConstraintSet.END, popUpWindowData_._arrowOffset);
-//        set.connect(arrow_bottom_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
-//        set.setMargin(arrow_bottom_right.getId(), ConstraintSet.END,  popUpWindowData_._arrowOffset);
+        set.connect(arrow_top_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
+        set.setMargin(arrow_top_right.getId(), ConstraintSet.END, popUpWindowData_._arrowOffset);
 
         set.applyTo(contraintLayer);
         contraintLayer.invalidate();
+
+
+
+        val contraintLayerBottom = (layout.findViewById<View>(R.id.contraint_bottom_arrows) as ConstraintLayout)
+        val setBottom = ConstraintSet()
+        setBottom.clone(contraintLayerBottom)
+
+        setBottom.connect(arrow_bottom.getId(), ConstraintSet.START,  ConstraintSet.PARENT_ID,  ConstraintSet.START, popUpWindowData_._arrowOffset)
+        setBottom.setMargin(arrow_bottom.getId(), ConstraintSet.START, popUpWindowData_._arrowOffset);
+
+//        setBottom.connect(arrow_bottom.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
+//        setBottom.setMargin(arrow_bottom.getId(), ConstraintSet.END, popUpWindowData_._arrowOffset);
+        setBottom.connect(arrow_bottom_right.getId(), ConstraintSet.END,  ConstraintSet.PARENT_ID,  ConstraintSet.END, popUpWindowData_._arrowOffset)
+        setBottom.setMargin(arrow_bottom_right.getId(), ConstraintSet.END,  popUpWindowData_._arrowOffset);
+//
+        setBottom.applyTo(contraintLayerBottom);
+        contraintLayerBottom.invalidate();
 
     }
 

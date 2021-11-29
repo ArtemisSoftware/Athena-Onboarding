@@ -1,14 +1,10 @@
 package com.artemissoftware.athenaonboard
 
-import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.util.DisplayMetrics
 import android.view.*
 
 import android.content.Intent
-import android.util.TypedValue
 import com.artemissoftware.athenaonboard.tutorial.*
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
 
@@ -38,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         popupTutorialManager?.let {
             return
         }
-
+/*
         val popupWindowData_1 = PopupWindowData(
             anchor = findViewById<View>(R.id.txt_title),
             layout = R.layout.test_test,
@@ -46,10 +42,11 @@ class MainActivity : AppCompatActivity() {
             description =  getString(R.string.lorem_ipsum_pequeno),
             displayMetrics = getDisplayMetrics(),
             vertPos = RelativePopupWindow.VerticalPosition.BELOW,
-            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT
+            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, arrowOffsetX = 80
         )
 
         val popUpTutorial_1 = CardTutorialPopup(popUpWindowData_ = popupWindowData_1)
+
 
 
 
@@ -90,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val popUpTutorial_4 = CardTutorialPopup(popUpWindowData_ = popupWindowData_4)
-
+*/
 
 
 
@@ -101,12 +98,26 @@ class MainActivity : AppCompatActivity() {
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
             vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
-            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT,
+            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, arrowOffsetX = 80,
             offsetY = -148
         )
 
         val popUpTutorial_5 = CardTutorialPopup(popUpWindowData_ = popupWindowData_5)
 
+
+        val popupWindowData_51 = PopupWindowData(
+            anchor = findViewById<View>(R.id.btn_show_popup_styx),
+            layout = R.layout.test_test,
+            title = "Tutorial styx",
+            description =  getString(R.string.lorem_ipsum_medio),
+            displayMetrics = getDisplayMetrics(),
+            vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
+            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, arrowOffsetX = 280,
+            offsetY = -148
+        )
+
+        val popUpTutorial_51 = CardTutorialPopup(popUpWindowData_ = popupWindowData_51)
+/*
 
         val popupWindowData_6 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_tartarus),
@@ -159,13 +170,13 @@ class MainActivity : AppCompatActivity() {
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
             vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
-            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT,
+            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT, arrowOffsetX = -180,
             offsetY = -132
         )
 
         val popUpTutorial_9 = CardTutorialPopup(popUpWindowData_ = popupWindowData_9)
 
-
+*/
         val popupWindowData_10 = PopupWindowData(
             anchor = findViewById<View>(R.id.btn_show_popup_help),
             layout = R.layout.test_test,
@@ -173,11 +184,26 @@ class MainActivity : AppCompatActivity() {
             description =  getString(R.string.lorem_ipsum_medio),
             displayMetrics = getDisplayMetrics(),
             vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
-            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT,
+            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT, arrowOffsetX = 480,
             offsetY = -132
         )
 
         val popUpTutorial_10 = CardTutorialPopup(popUpWindowData_ = popupWindowData_10)
+
+        val popupWindowData_101 = PopupWindowData(
+            anchor = findViewById<View>(R.id.btn_show_popup_help),
+            layout = R.layout.test_test,
+            title = "Tutorial help",
+            description =  getString(R.string.lorem_ipsum_medio),
+            displayMetrics = getDisplayMetrics(),
+            vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
+            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT, arrowOffsetX = 180,
+            offsetY = -132
+        )
+
+        val popUpTutorial_101 = CardTutorialPopup(popUpWindowData_ = popupWindowData_101)
+
+
 
 
         popupTutorialManager = PopupTutorialManager(onStart = {
@@ -186,15 +212,69 @@ class MainActivity : AppCompatActivity() {
             (findViewById<View>(R.id.layout_dim)).visibility = View.GONE
 
         }).apply {
-            execute(listOf<RelativePopupWindow>(
-                popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4, popUpTutorial_5, popUpTutorial_6,
-                popUpTutorial_7, popUpTutorial_8, popUpTutorial_9, popUpTutorial_10
-
-            ))
+            execute(allQuarters()
+//                listOf<RelativePopupWindow>(
+////                popUpTutorial_1, popUpTutorial_2, popUpTutorial_3, popUpTutorial_4, popUpTutorial_5, popUpTutorial_6,
+////                popUpTutorial_7, popUpTutorial_8,
+////                popUpTutorial_9, popUpTutorial_10
+//                //popUpTutorial_1, popUpTutorial_11
+//
+//                       // popUpTutorial_5, popUpTutorial_51,
+//                //popUpTutorial_10, popUpTutorial_101
+//            )
+            )
         }
 
     }
 
 
+
+    private fun allQuarters(): List<RelativePopupWindow>{
+
+        val offset = 100
+
+        val popupWindowData_11 = PopupWindowData(
+            anchor = findViewById<View>(R.id.txt_title),
+            layout = R.layout.test_test,
+            title = "Tutorial Title",
+            description =  getString(R.string.lorem_ipsum_pequeno),
+            displayMetrics = getDisplayMetrics(),
+            vertPos = RelativePopupWindow.VerticalPosition.BELOW,
+            horizPos = RelativePopupWindow.HorizontalPosition.ALIGN_LEFT, arrowOffsetX = offset,
+            offsetX = 0
+        )
+
+        val popUpTutorial_11 = CardTutorialPopup(popUpWindowData_ = popupWindowData_11)
+
+
+        val popupWindowData_1 = PopupWindowData(
+            anchor = findViewById<View>(R.id.btn_show_popup_help),
+            layout = R.layout.test_test,
+            title = "Tutorial Title",
+            description =  getString(R.string.lorem_ipsum_medio),
+            displayMetrics = getDisplayMetrics(),
+            vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
+            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT, arrowOffsetX = offset,
+            offsetX = -100, offsetY = -132
+        )
+
+        val popUpTutorial_1 = CardTutorialPopup(popUpWindowData_ = popupWindowData_1)
+
+        val popupWindowData_2 = PopupWindowData(
+            anchor = findViewById<View>(R.id.btn_show_popup_help),
+            layout = R.layout.test_test,
+            title = "Tutorial help",
+            description =  getString(R.string.lorem_ipsum_medio),
+            displayMetrics = getDisplayMetrics(),
+            vertPos = RelativePopupWindow.VerticalPosition.ABOVE,
+            horizPos = RelativePopupWindow.HorizontalPosition.RIGHT, arrowOffsetX = offset,
+            offsetX = 0, offsetY = -132, boxPaddingLeft = 24, boxPaddingRight = 24
+        )
+
+        val popUpTutorial_2 = CardTutorialPopup(popUpWindowData_ = popupWindowData_2)
+
+        return listOf<RelativePopupWindow>(popUpTutorial_11, popUpTutorial_1, popUpTutorial_2)
+
+    }
 
 }
