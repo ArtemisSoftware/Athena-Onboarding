@@ -7,11 +7,14 @@
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/arrow_box_top_left.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/gradient_back.xml" value="0.4675925925925926" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/ic_1.xml" value="0.48615384615384616" />
+        <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/ic_10k.xml" value="0.4685185185185185" />
+        <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/ic__triangle.xml" value="0.47129629629629627" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/pointer.xml" value="0.12" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/pop_up_tutorial_box.xml" value="0.325" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/test.xml" value="0.48615384615384616" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/drawable/test_box.xml" value="0.48615384615384616" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/activity_armory.xml" value="0.3984375" />
+        <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/activity_library.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/fragment_shields.xml" value="0.3984375" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/loading.xml" value="0.33125" />
@@ -21,6 +24,7 @@
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/popup_tutorial_card.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/test_2.xml" value="0.32864583333333336" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/test_test.xml" value="0.3949579831932773" />
+        <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/tooltip_view.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/gusta/AndroidStudioProjects/AthenaOnboard/app/src/main/res/layout/view_dim.xml" value="0.41458333333333336" />
       </map>
     </option>

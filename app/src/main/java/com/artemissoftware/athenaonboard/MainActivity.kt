@@ -18,12 +18,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<View>(R.id.btn_show_popup_armory).setOnClickListener{
+        val k = Intent(this@MainActivity, LibraryActivity::class.java)
+        //val k = Intent(this@MainActivity, ArmoryActivity::class.java)
+        startActivity(k)
 
-            val k = Intent(this@MainActivity, ArmoryActivity::class.java)
-            startActivity(k)
 
-        }
+//        findViewById<View>(R.id.btn_show_popup_armory).setOnClickListener{
+//
+//            val k = Intent(this@MainActivity, ArmoryActivity::class.java)
+//            startActivity(k)
+//
+//        }
 
     }
 

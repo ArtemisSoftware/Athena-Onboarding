@@ -4,10 +4,12 @@ import android.graphics.Point
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
 import com.artemissoftware.athenaonboard.CardTutorialPopup
 import com.artemissoftware.athenaonboard.R
 import com.artemissoftware.athenaonboard.addOnWindowFocusChangeListener
+import com.artemissoftware.athenaonboard.custom.Tooltip
 import com.artemissoftware.athenaonboard.getDisplayMetrics
 import com.artemissoftware.athenaonboard.tutorial.*
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow
@@ -24,7 +26,10 @@ class ShieldsFragment : Fragment(R.layout.fragment_shields) {
 
 
         addOnWindowFocusChangeListener { hasFocus ->
-            tutorial()
+            //tutorial()
+
+            view.findViewById<Tooltip>(R.id.tooltip).setPosition(view.findViewById<ImageView>(R.id.txt_available))
+            view.findViewById<Tooltip>(R.id.tooltip_2).setPosition(view.findViewById<ImageView>(R.id.img_shields))
         }
 
 

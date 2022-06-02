@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Tooltip">
+
+        <attr name ="tiptitle" format ="string|reference"/>
+        <attr name ="arrowPosition" format ="enum">
+            <enum name="noarrow" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="topcenter" value="2"/>
+            <enum name="bottom" value="3"/>
+            <enum name="bottomcenter" value="4"/>
+        </attr>
+
+    </declare-styleable>
+
+</resources>

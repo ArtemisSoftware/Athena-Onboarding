@@ -18,6 +18,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <com.artemissoftware.athenaonboard.custom.Tooltip
+        android:id="@+id/tooltip_2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_shields"
+        app:layout_constraintStart_toStartOf="@+id/img_shields"
+        app:arrowPosition="bottom"
+        app:tiptitle="sdfgdfgdfgdfgdfg"/>
+
+
     <ImageView
         android:id="@+id/img_shields"
         android:layout_width="wrap_content"
@@ -57,6 +68,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/img_shields"
         app:layout_constraintTop_toBottomOf="@+id/txt_1" />
+
+
+    <com.artemissoftware.athenaonboard.custom.Tooltip
+        android:id="@+id/tooltip"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_available"
+        app:arrowPosition="top"
+        app:tiptitle="@string/lorem_ipsum_pequeno"
+        />
 
 
     <include
